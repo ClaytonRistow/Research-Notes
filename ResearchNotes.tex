@@ -1,0 +1,185 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\geometry{a4paper}
+\usepackage{amsmath}
+\usepackage[mathscr]{euscript}
+  
+\usepackage[frenchb]{babel}
+  
+\title{Research Notes}
+\author{Clayton Ristow}
+\date{20 May 2015}
+
+\begin{document}
+\maketitle
+
+\section{Linear Polymers}
+\subsection{Modeling a Linear Polymer and Computing its Partition Function}
+The Partition Function, Z, is computed by summing the Boltzmann Factors over all possible energy states, w:
+
+\begin{equation}
+Z=\displaystyle\sum_{w}  e^{-\frac{E_w}{k_B T}}
+\end{equation}
+ 
+If we have a continuous distribution of energy states, this sum becomes an integral over the energy states:
+
+\begin{equation}
+Z=\int \mathrm{e}^{-\frac{E(w)}{k_B T}}\mathrm{d}w
+\end{equation}
+
+Consider a set of 2 particles with positions vectors \(\mathbf{r_1}\) and  \(\mathbf{r_2}\) and a potential between them \(U(|\mathbf{r_1-r_2}|)\). We calculate thier partition function be integrating over all possible configurations of the pair, that is every possible combination of \(\mathbf{r_1}\) and  \(\mathbf{r_2}\).
+
+\begin{equation}
+Z=\iint\limits_{\substack{\text{All} \\  \text{Space}}}\mathrm\mathrm{e}^{-\beta U(|\mathbf{r_1-r_2}|)}\mathrm{d}^3\mathbf{r_1}\mathrm{d}^{3}\mathbf{r_2}
+\end{equation}
+
+Now, consider a set of N particles, each with a position vector, \(\mathbf{r_i}\), and a potential between each consecutive pair, \(U(|\mathbf{r_i-r_{i-1}}|)\). This is the general model for a linear ploymer. Its partition function can be computed by integrating over each possible configuration, that is of every possible position of each particle, thus,
+
+\begin{equation}
+Z_N=\idotsint\limits_{\substack{\text{All} \\  \text{Space}}} \mathrm\mathrm{e}^{-\beta\sum\limits_{i=1}^{N-1}U(|\mathbf{r_i-r_{i+1}}|)}\mathrm{d}^3\mathbf{r_1}\dots \mathrm{d}^{3}\mathbf{r_N}
+\end{equation}
+
+or eqivalently:
+\begin{equation}
+Z_N=\int\limits_{\substack{\text{All} \\  \text{Space}}} \mathrm\mathrm{e}^{-\beta\sum\limits_{i=1}^{N-1}U(|\mathbf{r_i-r_{i+1}}|)}\prod\limits_{i=1}^N \mathrm{d}^3\mathbf{r_i}
+\end{equation}
+
+Let us consider a Gaussain or spring potential. Such a potential has the form;
+
+\begin{equation}
+U(x)=\frac{kx^2}{2}
+\end{equation}
+
+Then if this potential is the potential between the particles then our partition function is 
+
+\begin{equation}
+Z_N=\int\limits_{\substack{\text{All} \\  \text{Space}}} \mathrm{e}^{-\beta\sum\limits_{i=1}^{N-1}\frac{kx_i^2}{2}}\prod\limits_{i=1}^N \mathrm{d}^3\mathbf{r_i}
+\end{equation}
+
+This can be easily rewritten as 
+
+\begin{equation}
+Z_N=\int\limits_{\substack{\text{All} \\  \text{Space}}}\prod\limits_{i=1}^{N-1}\Big[ \mathrm{e}^{\frac{-\beta kx_i^2}{2}} \mathrm{d}^3\mathbf{r_i}\Big]\mathrm{d}^3\mathbf{r_N}
+\end{equation}
+
+Because we are integrating over all space, it does not matter where we put our origin for each integral. Let us start by placing the origin at \(\mathbf{r_N}\) and then integrating over \({d}^3\mathbf{r_{N-1}}\). In this coordinate system, \(\mathbf{r_N} = \mathbf{0}\)  so \(x_{N-1} = |\mathbf{r_{N-1}-r_N}|=|\mathbf{r_{N-1}}|\). Then we can replace  \({d}^3\mathbf{r_{N-1}}\) with \({d}^3x_{N-1}\). Then once we have integrated this, we can move the origin to \(\mathbf{r_{N-1}}\)  and repeat this process. This process can then be repeated with results in the variable transformation \(\mathbf{r_i} \rightarrow x_i\) for all \(i<N\). Our partition function then becomes:
+
+\begin{equation}
+Z_N=\int\limits_{\substack{\text{All} \\  \text{Space}}}\prod\limits_{i=1}^{N-1}\Big[ \mathrm{e}^{\frac{-\beta kx_i^2}{2}} \mathrm{d}^3 x_i \Big]\mathrm{d}^3\mathbf{r_N}
+\end{equation}
+
+We now have an integral that has terms that depend only on one variable so we can rewrite it as 
+
+\begin{equation}
+Z_N=\int \mathrm{d}^3\mathbf{r_N} \prod\limits_{i=1}^{N-1}\Big[ \int \mathrm{e}^{\frac{-\beta kx_i^2}{2}} \mathrm{d}^3 x_i \Big]
+\end{equation}
+
+It is conventional to write the volume of all space as simply \(V\) rather than infinity. The integral inside the product can be computed using spherical coordinates and mathematica. We get 
+
+\begin{equation}
+Z_N=V\Big(\frac{2\pi}{\beta k}\Big)^{\frac{3}{2}(N-1)}
+\end{equation}
+
+\subsection{Justifying the Model and Computing Thermal Averages}
+
+we know from thermal physics we know how to calculate the probability of any state being occupied by calculating the boltzmann factor over the partition function. In fact if we let x vary, this becomes a probability distribution
+
+\begin{equation}
+\rho(\mathbf{r'}|\mathbf{r})=\frac{e^{-\beta U(|\mathbf{r'-r}|)}}{Z}
+\end{equation}
+
+This equation represents the probability of finding a particle at \(\mathbf{r'}\) when the previous particle is at position\( \mathbf{r}\).
+We are now in a position to justify our use of the Gaussian potential to model the polymers. we have provided no physical justification for this model and in fact it is very innaccurate at the microscopic level. The justification is as follows:
+
+The thermal average of the end to end distance of the polymer,\( |\mathbf{r_1-r_N}|^2 = R^2\) is computed by taking the distance weighted with the boltzman factors and then summing over all of them and then dividing by the partition function. then for our continuous energy distribution, this sum becomes an integral. 
+
+\begin{equation}
+\langle R^2 \rangle = \frac{\int R^2 e^{-\beta\sum\limits_{i=1}^{N-1}U(|\mathbf{r_i-r_{i+1}}|)}\prod\limits_{i=1}^N \mathrm{d}^3\mathbf{r_i}}{Z_N}
+\end{equation}
+ 
+Then if we recall the definition of our probability distribution from equation 12, we can rewrite this average as:
+
+\begin{equation}
+\langle R^2 \rangle =\frac{1}{V} \int R^2  \prod\limits_{i=1}^{N-1}\rho(\mathbf{r_i}|\mathbf{r_{i+1}}) \prod\limits_{i=1}^N \mathrm{d}^3\mathbf{r_i}
+\end{equation} 
+
+simply rearrangin the terms we get:
+
+\begin{equation}
+\langle R^2 \rangle =\frac{1}{V} \int \bigg[ R^2  \int \Big[ \prod\limits_{i=2}^{N-1}\rho(\mathbf{r_i}|\mathbf{r_{i+1}}) \mathrm{d}^3\mathbf{r_i} \Big]\rho(\mathbf{r_1}|\mathbf{r_{2}})\; \mathrm{d}^3\mathbf{r_1} \mathrm{d}^3\mathbf{r_N}\bigg]
+\end{equation}
+
+Let us take a closer look at the expression in the middle: 
+\begin{equation}
+\int \Big[ \prod\limits_{i=2}^{N-1}\rho(\mathbf{r_i}|\mathbf{r_{i+1}}) \mathrm{d}^3\mathbf{r_i} \Big]\rho(\mathbf{r_1}|\mathbf{r_{2}})
+\end{equation}
+
+The Central Limit Theorem says that if we have a probability distribution with some mean\(\mu\) and a standard deviation \(\sigma\), if we randomly take values according to that distribution N times we will have a sample of that distribution of size N. Then if we take a large number of these samples and plot the average value of these samples the distribution we get is a Gaussian of the form:
+
+\begin{equation}
+P(x)=\sqrt{\frac{N}{2\pi \sigma^2}}e^{\frac{-N(x-\mu)^2}{2\sigma^2}}
+\end{equation}
+
+Back to equation 16. What we are essentailly doing is taking values for the probability distribution N-1 times, once for each pair in the integrand, and then doing it an infinite number of times (Integrating). This is exactily the process described by the central limit theorem so we may apply the central limit theorem to get 
+
+\begin{equation}
+\langle  |\mathbf{r_1-r_N}|^2 \rangle =\frac{1}{V} \int |\mathbf{r_1-r_N}|^2 \sqrt{\frac{N-1}{2\pi \sigma^2}}e^{\frac{-(N-1)}{2\sigma^2}( |\mathbf{r_1-r_N}|-\mu)^2} \mathrm{d}^3\mathbf{r_1} \mathrm{d}^3\mathbf{r_N}
+\end{equation}
+ 
+The point is this: due to the central limit theorem, it does not matter what our original porbability distribution \(\rho\) was, as long as we have a large enough number of monomers, we are going to end up with a gaussian distribution regardless. We may then choose what ever  \(\rho\) makes our lives easiest. in this case the desired \(\rho\) is our Gaussian potential because it allows us to ignore the assumption that the number of monomers must be large. We may divide the polymer into segments of smaller length and still keep the guassian characteristics which helps us to evaluate the integrals that arrise when computing the thermal average of the many quatities we desire. 
+
+\subsection{Posing the Question}
+We now have enough information to start asking questions. What would be the effect of a central potential well? For instance some central electric field attracting all monomers to some point. If we define our coordinate system to have its origin at this point the result is a simple modification of the Hamiltonian in our original paritional function
+
+\begin{equation}
+Z_N=\int\limits_{\substack{\text{All} \\  \text{Space}}} \mathrm\mathrm{e}^{-\beta\big[\sum\limits_{i=1}^{N-1}U(|\mathbf{r_i-r_{i+1}}|) +\sum\limits_{i=1}^{N}V(|\mathbf{r_i}|)\big]}\prod\limits_{i=1}^N \mathrm{d}^3\mathbf{r_i}
+\end{equation}
+
+We could also ask what the effect would be if we added some force, attractive or replusive, between all of the polymers. Again, this is a simple modification of the Hamiltonian.
+
+\begin{equation}
+Z_N=\int\limits_{\substack{\text{All} \\  \text{Space}}} \mathrm\mathrm{e}^{-\beta\big[\sum\limits_{i=1}^{N-1}U(|\mathbf{r_i-r_{i+1}}|) \sum\limits_{i=1}^{N}V(|\mathbf{r_i}|)+\sum\limits_{i=1}^{N-1}\sum\limits_{j=i+1}^{N}W(|\mathbf{r_i-r_j}|)\big] }\prod\limits_{i=1}^N \mathrm{d}^3\mathbf{r_i}
+\end{equation}
+
+We may also ask qestions about the size of the polymer. That is to say, what are the dimensions of the smallest box that would contain the polymer. We have already posed the question of what is the average end to end distance of the polymer. We can also ask about a quantity called the radius of gyration, \(R_g\) which measures how much the polymer wiggles. It is defined by:
+
+\begin{equation}
+R_g^2=\frac{1}{N}\sum\limits_{i=1}^N |\mathbf{r_i-r_{avg}}|^2
+\end{equation}
+
+All of these quatities can be computed by using thermal averages.
+
+We can also ask about forces called entropic forces. These are forces that come purely from entropy. If you tried to compress the ploymer (put it in a lower entropy state) it is these forces that would make it difficult for you to compress it. We can get these forces from the entropy which is calculated from the helmholtz free energy \(\mathscr{F}\) as
+
+\begin{equation}
+S=\left(\frac{\partial \mathscr{F}}{\partial T}\right)_{V,N}
+\end{equation}
+
+The Helmholtz Free Energy is lalculated from the partition function as follows
+
+\begin{equation}
+\mathscr{F}=\frac{-\ln(Z_N)}{\beta}
+\end{equation}
+
+So we may now directly compute entropy from the partition function.
+
+\begin{equation}
+S=\left(\frac{\partial}{\partial T}\left(\frac{-\ln(Z_N)}{\beta}\right)\right)_{V,N}
+\end{equation}
+
+If we were investigating linear polymers only, our work would be done (after a few calculations). But we are interested in branched polymers which can be modeled as graphs using graph theory. Then the Hamiltonian is not simply a sum over the pairs but a sum over the edges on the graph.If we let \(\alpha\) be a graph, we can define \(\varepsilon_\alpha\equiv \{ \text{Edges on}\alpha\}\) and our Hamiltonian becomes
+
+\begin{equation}
+H= \sum\limits_{\alpha} \sum\limits_{i,j \in \varepsilon_\alpha}U(|\mathbf{r_i-r_{i+1}}|)
+\end{equation}
+
+and putting that into our partition function we get
+\begin{equation}
+Z_N=\int\limits_{\substack{\text{All} \\  \text{Space}}} \mathrm\mathrm{e}^{-\beta \sum\limits_{\alpha} \sum\limits_{i,j \in \varepsilon_\alpha}U(|\mathbf{r_i-r_j}|)}\prod\limits_{i=1}^N \mathrm{d}^3\mathbf{r_i}
+\end{equation}
+
+It is our task to find this partition function and then use it to find various thermal quantities from it.
+\end{document} 
