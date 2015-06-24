@@ -391,4 +391,279 @@ Then we cancel the \(x^n\)s and get our final formula for rooted trees.
 \begin{equation}
  R_n=  F_{n+1} +\frac{1}{6}\sum_{i=0}^{n+2} \sum_{j=0}^{n+2-i} F_iF_jF_{n+2-i-j}+\frac{1}{2}\sum_{i=0}^{n+2}  F_iF_{\frac{n-i}{2}+1}+\frac{1}{3} F_{\frac{n+2}{3}} \quad \text{Where } F_q=0 \text{ if } q \notin \mathbb{Z}
 \end{equation}
+
+\section{General Trees}
+We are almost in a position where we are able to enumerate general trees but before we can do this we must develop a few new concepts. 
+	First, we will define what it means for two nodes to be similar. Two nodes, a and b, on a graph g, are said to be similar if there exists an element in the permutation group \(P_g\) such that a and b appear next to each other in the permutation. In other words, two points are similar if they exchange places in a permuataion of the graph (Figure 9). Similarity is an equivalence relation on the set of nodes of g and therefor forms a partition on the set of nodes. We can divide the nodes into subsets where every node in each subsets is eqivalent to one another. These groups are called node similarity classes and we define \(p_g^*\) to be the number of similarity classes for a graph g. 
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+[scale=.8, every node/.style={circle,draw}]
+\node (n1) at (1,7) {a};
+\node (n2) at (1,3) {b};
+\node (n3) at (3,5) {};
+\node (n4) at (6,5) {};
+\node (n5) at (8,7) {};
+\node (n6) at (8,3) {};
+
+\node (n7) at (11,7) {b};
+\node (n8) at (11,3) {a};
+\node (n9) at (13,5) {};
+\node (n10) at (16,5) {};
+\node (n11)at (18,7) {};
+\node (n12) at (18,3) {};
+
+\foreach \from/\to in {n1/n3,n2/n3,n3/n4,n4/n5,n4/n6,n7/n9,n8/n9,n9/n10,n10/n11,n10/n12}
+	\draw (\from) -- (\to);
+
+\end{tikzpicture}
+\caption{a and b are similar nodes because they are allowed to swap places}
+\end{figure} 
+
+Next we will define what it means if two edges are similar. We say two edges are similar if thier end points are belong to the same node similarity classes (Fig. 10) Edge similarity is an equivalence relation on the set of edges in a graph g. We can therefore partition the set of edges into edge similarity classes just as we did with nodes. We will define\(q_g^*\) to be the number of edge similarity classes.
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+[scale=.8]
+\tikzset{circ/.style={circle,draw}}
+\node [circ] (n1) at (1,7) {};
+\node at (1.75,4.15) {a};
+\node at (1.75, 5.85) {b};
+\node [circ] (n2) at (1,3) {};
+\node [circ] (n3) at (3,5) {};
+\node [circ] (n4) at (6,5) {};
+\node [circ] (n5) at (8,7) {};
+\node [circ] (n6) at (8,3) {};
+
+\node [circ] (n7) at (11,7) {};
+\node at (11.75,4.15) {b};
+\node at (11.75, 5.85) {a};
+\node [circ] (n8) at (11,3) {};
+\node [circ] (n9) at (13,5) {};
+\node [circ] (n10) at (16,5) {};
+\node [circ] (n11)at (18,7) {};
+\node [circ] (n12) at (18,3) {};
+
+\foreach \from/\to in {n1/n3,n2/n3,n3/n4,n4/n5,n4/n6,n7/n9,n8/n9,n9/n10,n10/n11,n10/n12}
+	\draw (\from) -- (\to);
+
+\end{tikzpicture}
+\caption{a and b are similar edges}
+\end{figure}
+ 
+To provide an intuitive image of what these node and edge similarity classes look like, Figure 11 shows a graph where nodes and edges with the same labels are in the same similarity classes.
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+[scale=.8]
+\tikzset{circ/.style={circle,draw}}
+\node [circ] (n1) at (1,1) {1};
+\node [circ] (n2) at (1,3) {1};
+\node [circ] (n3) at (1,5) {1};
+\node [circ] (n4) at (1,7) {1};
+\node [circ] (n5) at (3,6) {2};
+\node [circ] (n6) at (3,2) {2};
+\node [circ] (n7) at (5,4) {3};
+\node [circ] (n8) at (8,4) {3};
+\node [circ] (n9) at (10,6) {2};
+\node [circ] (n10) at (10,2) {2};
+\node [circ] (n11) at (12,1) {1};
+\node [circ] (n12) at (12,3) {1};
+\node [circ] (n13) at (12,5) {1};
+\node [circ] (n14) at (12,7) {1};
+
+\node at (3.75,3.15) {b};
+\node at (3.75, 4.85) {b};
+\node at (9.25,3.15) {b};
+\node at (9.25, 4.85) {b};
+\node at (2,1.25) {a};
+\node at (2,2.75) {a};
+\node at (2,5.25) {a};
+\node at (2,6.75) {a};
+\node at (11,1.25) {a};
+\node at (11,2.75) {a};
+\node at (11,5.25) {a};
+\node at (11,6.75) {a};
+\node at (6.5,4.25) {c};
+
+\foreach \from/\to in {n1/n6,n2/n6,n3/n5,n4/n5,n5/n7,n6/n7,n7/n8,n8/n9,n8/n10,n10/n11,n10/n12,n9/n13,n9/n14}
+	\draw (\from) -- (\to);
+
+\end{tikzpicture}
+\caption{A tree labeled according to similarity classes}
+\end{figure}
+
+Now we wish to define a special type of edge called a symmetry edge. A symmetry edge is an edge who's end nodes are in the same similarity class. Intuitvely, if we were to draw a dashed line down the middle of a symmetry line, the graph would be symmetric. An example of a symmetry line is the "c" line from figure 11. For any graph g, we define \(s_g\) to be the number of symmetry lines.
+
+It may not be clear, but to enumerte trees, we need to derive a relationship between \(p_g^*\), \(q_g^*\) and \(s_g\). to do this we will first show that for any tree:
+\begin{equation}
+s_g=0 \; \text{or}  \;1
+\end{equation}
+Let us suppose we have a tree with two symmetry lines:
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+[scale=.5]
+\tikzset{circ/.style={circle,draw}}
+\node [circ] (n1) at (3,1) {1};
+\node [circ] (n2) at (5,3) {2};
+\node [circ] (n3) at (7,1) {3};
+\node (n4) at (1,0) {};
+\node (n5) at (9,0) {};
+\node (n6) at (1,2) {};
+\node (n7) at (9,2) {};
+
+\foreach \from/\to in {n1/n2,n2/n3}
+	\draw (\from) -- (\to);
+\foreach \from/\to in {n4/n1,n6/n1,n5/n3,n7/n3}
+	\draw [dashed] (\from) -- (\to);
+
+\end{tikzpicture}
+\caption{A tree with two (non-dashed) symmetry lines. note: all three nodes are similar }
+\end{figure}
+If those 3 nodes are similar then there must be some way to swap thier lables while keeping the edge set constant. Clearly, we are able to swap 1 and 3 while maintaining the edge set. But since all three are similar we must be able to swap 2 with 1 or 3. Lets look at every possible rearrangement of the three nodes by applying every element of \(S_3\) (except the identity) to the nodes and seeing if we can find such permutations. 
+\begin{center}
+\begin{tabular}[!h]{|  l | c |  r | }
+\hline
+Permutation & Resulting Tree & Resluting Edge Set \\ \hline
+(12) & \begin{tikzpicture}
+[scale=.5]
+\tikzset{circ/.style={circle,draw}}
+\node [circ] (n1) at (0,0) {2};
+\node [circ] (n2) at (2,2) {1};
+\node [circ] (n3) at (4,0) {3};
+\foreach \from/\to in {n1/n2,n2/n3} \draw (\from) -- (\to);
+\end{tikzpicture} & \{(1,2),(1,3)\} \\ \hline
+(13) & \begin{tikzpicture}
+[scale=.5]
+\tikzset{circ/.style={circle,draw}}
+\node [circ] (n1) at (0,0) {3};
+\node [circ] (n2) at (2,2) {2};
+\node [circ] (n3) at (4,0) {1};
+\foreach \from/\to in {n1/n2,n2/n3} \draw (\from) -- (\to);
+\end{tikzpicture} & \{(1,2),(2,3)\} \\ \hline
+(23) & \begin{tikzpicture}
+[scale=.5]
+\tikzset{circ/.style={circle,draw}}
+\node [circ] (n1) at (0,0) {1};
+\node [circ] (n2) at (2,2) {3};
+\node [circ] (n3) at (4,0) {2};
+\foreach \from/\to in {n1/n2,n2/n3} \draw (\from) -- (\to);
+\end{tikzpicture} & \{(1,3),(2,3)\} \\ \hline
+(123) & \begin{tikzpicture}
+[scale=.5]
+\tikzset{circ/.style={circle,draw}}
+\node [circ] (n1) at (0,0) {3};
+\node [circ] (n2) at (2,2) {1};
+\node [circ] (n3) at (4,0) {2};
+\foreach \from/\to in {n1/n2,n2/n3} \draw (\from) -- (\to);
+\end{tikzpicture} & \{(1,3),(1,2)\} \\ \hline
+(321) & \begin{tikzpicture}
+[scale=.5]
+\tikzset{circ/.style={circle,draw}}
+\node [circ] (n1) at (0,0) {2};
+\node [circ] (n2) at (2,2) {3};
+\node [circ] (n3) at (4,0) {1};
+\foreach \from/\to in {n1/n2,n2/n3} \draw (\from) -- (\to);
+\end{tikzpicture} & \{(2,3),(1,3)\} \\ \hline
+\end{tabular}
+\end{center}
+
+The original edge set was\( \{ (1,2),(2,3)\}\) and the only permutation that preserved this edge set was (13) which does not involve 2. So, no permuataion that swaps 2 with 1 or 3 preserves the edge set so 2 is not similar to 1 or 3. We reach a contracdiction and we conclude that no such tree exists. We can similarly show that this happens if \(s_g\) = 3,4,5... and so on. Thus, a tree may only have 1 or 0 symmetry lines.
+
+We may now derive a relation between \(p_g^*\), \(q_g^*\) and \(s_g\). Let g be any tree. Then we may lable the nodes by similarity classes 1,2,3,4,...,\(p_g^*\). We can then start listing some edge similarity classes: Edges that go (1,2), Edges that go (2,3), ... , Edges that go (\(p_g^*-1\),\(p_g^*\)). This subset of edge similarity classes, which we will call \(\mathscr{A}\), clearly has size \(p_g^*\). Now let us consider the two cases: \(s_g\)=0 and\( s_g\)=1. If \(s_g\)=0 then clearly the set \(\mathscr{A}\) constitues all of the edge similarity classes. It then follows that 
+\begin{equation}
+q_g^*=p_g^*-1\quad  \text{if } s_g =0
+\end{equation}
+	Similarly, if \(s_g=1\) then there is some edge similarity class that we havent counted which contains the symmetry line. Then clearly \(q_g^*= \mathscr{A}+1\) or equivalently
+\begin{equation}
+q_g^*=p_g^* \quad \text{if } s_g =1
+\end{equation}
+then combining the two equations, we get the general relation:
+\begin{equation}
+1=p_g^*-(q_g^*-s_g)
+\end{equation}
+
+Now we will use Eq 36 to derive a functional equation for \(T(x)\), a power series that has coefficients \(T_n\) being the number of trees with n nodes. Let us define \(\mathscr{T}_n\) to be the the set of trees with n nodes and let us perform a summation of Eq 36 over all elements g in \(\mathscr{T}_n\)
+\begin{equation}
+\sum_{g \in \mathscr{T}_n} 1=\sum_{g \in \mathscr{T}_n}p_g^*- \sum_{g \in \mathscr{T}_n}(q_g^*-s_g)
+\end{equation}
+Now lets examine each term closely. The left hand side will clearly result ing the magnitude of the set \(\mathscr{T}_n\) which is simple \(T_n\) so the left hand side becomes \(T_n\).
+
+Next we first realize that the number of rooted trees that can be created from an unrooted tree is the same as the number of node similarity classes. If we were to consruct two rooted trees from two nodes from the same similarity class, they would be the same because the similarity of the end nodes requires that they are connected to all the other nodes in the same way. Thus we can think of \(p_g^*\) as the number of ways to make rooted trees from a single unrooted tree. So then the sum over all unrooted trees with n nodes will give us the total number of rooted trees with n nodes or more simply
+\begin{equation}
+\sum_{g \in \mathscr{T}_n}p_g^*=R_n
+\end{equation}
+
+Finally, we will look at the sum \(\sum_{g \in \mathscr{T}_n}(q_g^*-s_g)\). If \(s_g=0\) we may think of \(q_g^*\) as the number of trees that are rooted at edges in different similarity classes. And, if \(s_g=1\)  we may think of \(q_g^*-1\) as the number of rooted trees rooted at edges in different similarity classes that are not the symmetric class. In both cases then \((q_g^*-s_g)\) the number of rooted trees that can be constructed by rooting the trees at different edge similarity classes. and then clearly if we define\(L_n\) to be the number of trees with n nodes rooted at edges in different equivlence classes. then clearly 
+\begin{equation}
+\sum_{g \in \mathscr{T}_n}(q_g^*-s_g)= L_n
+\end{equation} 
+Combining all of this information we get the functional equation
+\begin{equation}
+T(x)=R(x)-L(x)
+\end{equation}
+The only problem is we dont yet know what L(x) is. Clearly, L(x) can be computed as 
+\begin{equation}
+L(x)=\text{(\# trees rooted at edges in different similarity classes)}-\text{(\# trees rooted at a symmetry edge)}
+\end{equation}
+We begin by noticing that if we take a tree and choose an edge we can split it into to two planted trees as show in figure 13. 
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+[scale=.5]
+\tikzset{circ/.style={circle,draw}}
+\tikzset{sq/.style={draw, minimum size=.35cm}}
+\node [circ] (n1) at (1,7) {};
+\node at (1.75,4.15) {a};
+\node [circ] (n2) at (1,3) {};
+\node [circ] (n3) at (3,5) {};
+\node [circ] (n4) at (6,5) {};
+\node [circ] (n5) at (8,7) {};
+\node [circ] (n6) at (8,3) {};
+\node [circ]  (n13) at (12,3) {};
+\node [sq] (n14) at (14,5) {};
+\node [circ] (n7) at (17,7) {};
+\node [sq] (n8) at (17,3) {};
+\node [circ] (n9) at (19,5) {};
+\node [circ] (n10) at (22,5) {};
+\node [circ] (n11)at (24,7) {};
+\node [circ] (n12) at (24,3) {};
+\node at (10,5) {=};
+\node at (16,5) {+};
+
+\foreach \from/\to in {n1/n3,n2/n3,n3/n4,n4/n5,n4/n6,n7/n9,n8/n9,n9/n10,n10/n11,n10/n12,n13/n14}
+	\draw (\from) -- (\to);
+\end{tikzpicture}
+\caption{splitting a tree allong edge a into two smaller planted trees}
+\end{figure}
+ 
+
+Clearly, the two resulting trees will be the same for all ednes chosen in the same equivalence class so we may compute the number of trees rooted at edges in diferent similarity classes as the combinations of these two planted trees. By now it is easy to see that we can count these combinations using Polya's Enumeration Theorem and the symmetric group \(S_2\). We get:
+\begin{equation}
+\text{(\# trees rooted at edges in different similarity classes)}=\frac{1}{x^2}Z_{S_2}(F(x),F(x^2))=\frac{1}{2x^2}(F^2(x)+F(x^2))
+\end{equation}
+The \(\frac{1}{x^2}\) comes from the fact the the planted trees we get from splitting have a total of two extra nodes. 
+
+Then notice that if we split the tree along a symmetry edge, we get the same planted tree on either side. So then 
+\begin{equation}
+\text{(\# trees rooted at a symmetry edge)}=\frac{F(x^2)}{x^2}
+\end{equation}
+We use \(F(x^2)\)  Because when we choose a planted tree we want it node count to double since we have two of them. combining these two equations we can get an expression for \(L(x)\)
+\begin{equation}
+L(x)= \frac{1}{2x^2}(F^2(x)-F(x^2))
+\end{equation}
+And we can then finally wirte our functional expresseion for \(T(x)\) as
+\begin{equation}
+T(x)=R(x) -\frac{F^2(x)}{2x^2}+\frac{F(x^2)}{2x^2}
+\end{equation}
+And then we can derive the functional form by pluggin in the power series, equating like powers of x and then canceling the \(x^n\) to get
+\begin{equation}
+T_n=R_n-\sum_{i=0}^nF_iF_{n+2-i} + F_{\frac{n}{2}+1}
+\end{equation}
+And we finally have a formula for enumerating trees!
+
 \end{document}

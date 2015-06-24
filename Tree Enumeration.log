@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.30)  21 JUN 2015 20:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.30)  23 JUN 2015 20:08
 entering extended mode
 **C:/Users/Clayton/Documents/GitHub/Research-Notes/Tree*Enumeration.tex
 ("C:/Users/Clayton/Documents/GitHub/Research-Notes/Tree Enumeration.tex"
@@ -724,16 +724,27 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4] [5] [6]
+[4] [5]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6] [7]
+LaTeX Font Info:    Try loading font information for U+eus on input line 577.
+ (C:\texmf\tex\latex\amsfonts\ueus.fd
+File: ueus.fd 2013/01/14 v3.01 Euler Script
+) [8] [9]
 ("C:\Users\Clayton\Documents\GitHub\Research-Notes\Tree Enumeration.aux") ) 
 Here is how much of TeX's memory you used:
- 12899 strings out of 493921
- 242634 string characters out of 3154895
- 288908 words of memory out of 3000000
- 15945 multiletter control sequences out of 15000+200000
- 15356 words of font info for 47 fonts, out of 3000000 for 9000
+ 12932 strings out of 493921
+ 243180 string characters out of 3154895
+ 303908 words of memory out of 3000000
+ 15972 multiletter control sequences out of 15000+200000
+ 15956 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,9n,61p,1328b,666s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,13n,61p,1328b,666s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:
 \Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx
 1440.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec
@@ -746,10 +757,12 @@ cm/cmmi7.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/texmf/fonts
 /type1/public/amsfonts/cm/cmr5.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmr
 7.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/texmf/fonts/type1
 /public/amsfonts/cm/cmsy5.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmsy7.pf
-b><C:/texmf/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "Tree Enumeration.pdf" (6 pages, 161644 bytes).
+b><C:/texmf/fonts/type1/public/amsfonts/euler/eusm10.pfb><C:/texmf/fonts/type1/
+public/amsfonts/euler/eusm7.pfb><C:/texmf/fonts/type1/public/amsfonts/symbols/m
+sbm10.pfb>
+Output written on "Tree Enumeration.pdf" (9 pages, 190296 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
+ 228 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
