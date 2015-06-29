@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.30)  23 JUN 2015 20:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.30)  29 JUN 2015 15:19
 entering extended mode
 **C:/Users/Clayton/Documents/GitHub/Research-Notes/Tree*Enumeration.tex
 ("C:/Users/Clayton/Documents/GitHub/Research-Notes/Tree Enumeration.tex"
@@ -735,34 +735,85 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Font Info:    Try loading font information for U+eus on input line 577.
  (C:\texmf\tex\latex\amsfonts\ueus.fd
 File: ueus.fd 2013/01/14 v3.01 Euler Script
-) [8] [9]
-("C:\Users\Clayton\Documents\GitHub\Research-Notes\Tree Enumeration.aux") ) 
+) [8] [9] [10]
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 759.
+
+[11]
+LaTeX Font Info:    Calculating math sizes for size <> on input line 764.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <> not available
+(Font)              size <5> substituted on input line 764.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 764.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 764.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <> not available
+(Font)              size <5> substituted on input line 764.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.7> not available
+(Font)              size <5> substituted on input line 764.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.5> not available
+(Font)              size <5> substituted on input line 764.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <> not available
+(Font)              size <5> substituted on input line 764.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 764.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 764.
+
+[12] ("C:\Users\Clayton\Documents\GitHub\Research-Notes\Tree Enumeration.aux")
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 4.5pt have occurred.
+
+ ) 
 Here is how much of TeX's memory you used:
- 12932 strings out of 493921
- 243180 string characters out of 3154895
+ 12968 strings out of 493921
+ 243605 string characters out of 3154895
  303908 words of memory out of 3000000
- 15972 multiletter control sequences out of 15000+200000
- 15956 words of font info for 50 fonts, out of 3000000 for 9000
+ 16003 multiletter control sequences out of 15000+200000
+ 21201 words of font info for 71 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  55i,13n,61p,1328b,666s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:
-\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx
-1440.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec
-\dpi600\ecrm1000.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
-\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fon
-ts\pk\ljfour\jknappen\ec\dpi600\ecrm1728.pk><C:/texmf/fonts/type1/public/amsfon
-ts/cm/cmex10.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/texmf/
-fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/texmf/fonts/type1/public/amsfonts/
-cm/cmmi7.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/texmf/fonts
-/type1/public/amsfonts/cm/cmr5.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmr
-7.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/texmf/fonts/type1
-/public/amsfonts/cm/cmsy5.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmsy7.pf
-b><C:/texmf/fonts/type1/public/amsfonts/euler/eusm10.pfb><C:/texmf/fonts/type1/
-public/amsfonts/euler/eusm7.pfb><C:/texmf/fonts/type1/public/amsfonts/symbols/m
-sbm10.pfb>
-Output written on "Tree Enumeration.pdf" (9 pages, 190296 bytes).
+ <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
+0\ecrm0900.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
+pen\ec\dpi600\ecbx1440.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\
+ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2
+.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Clayton\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1728.pk><C:/texmf/fonts/t
+ype1/public/amsfonts/cm/cmex10.pfb><C:/texmf/fonts/type1/public/amsfonts/cmextr
+a/cmex9.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/texmf/fonts
+/type1/public/amsfonts/cm/cmmi5.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cm
+mi6.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/texmf/fonts/type
+1/public/amsfonts/cm/cmmi9.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmr10.p
+fb><C:/texmf/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/texmf/fonts/type1/publ
+ic/amsfonts/cm/cmr6.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/t
+exmf/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/texmf/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/texmf/
+fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/texmf/fonts/type1/public/amsfonts/
+cm/cmsy7.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/texmf/fonts
+/type1/public/amsfonts/euler/eusm10.pfb><C:/texmf/fonts/type1/public/amsfonts/e
+uler/eusm7.pfb><C:/texmf/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "Tree Enumeration.pdf" (12 pages, 263518 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
+ 278 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

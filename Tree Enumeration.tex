@@ -666,4 +666,113 @@ T_n=R_n-\sum_{i=0}^nF_iF_{n+2-i} + F_{\frac{n}{2}+1}
 \end{equation}
 And we finally have a formula for enumerating trees!
 
+\section{Counting Branch Points}
+Now that we have derived the equations for planted, rooted, and unrooted Trees, it is not difficult to refine these equations to be able to count trees with more specific qualifications. For example, we can also enumerate graphs with a given number of nodes that also have a specific number of points with three edges emerging from it. To do this we will use a multivariate version of Polya's Enumeration Theorem to count both the branch nodes and the total nodes. This multivariate form introduces no new concepts into Polya's Enumeration Theorem and is an easy generaization from the single variable case. Simply put, it states:
+
+Let G be a graph. Let \(F(x,y)\) be a power series 
+\begin{equation}
+F(x,y)=\sum_{i=0}^\infty \sum_{j=0}^\infty F_{ij} x^iy^j
+\end{equation}
+where \(F_{ij}\) is the number of ways to represent the graph with i of one object and j of another object. Then we may compute \(F(x,y)\) as
+\begin{equation}
+F(x,y)=Z_G(f(x,y),f(x^2,y^2),f(x^3,y^3)...)
+\end{equation}
+Where f(x,y) is the decoration function and \(Z_G\) is the cycle index. 
+
+In this multivariate formulation, we will be using alot of double sums like the one in equation 47. It is convenient to define the notation:
+\begin{equation}
+\sum_{\substack{j=0\\i=0}}^{\substack{n\\m}} \equiv  \sum_{i=0}^n \sum_{j=0}^m
+\end{equation}
+
+We are now ready to begin counting trees. We will start again with planted trees and be careful to keep track of the branch nodes. We will let the power series
+\begin{equation}
+F(x,y)=\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^b
+\end{equation}
+Be the generating function for planted trees and \(F_{nb}\) will be the number of planted trees with n nodes and b branch nodes. We can count these trees just as we did before by decorating the starting tree (tree with 2 nodes) with 0, 1, or 2 planted trees (Figure 6). When we do this using our new multivariate formulation of Polya's Enumeration Theorem we get a recursive functional equation that is nearly identical to the one we got before:
+\begin{equation}
+F(x,y)=x^2(1+\frac{F(x,y)}{x}+\frac{y}{x^2}(Z_{S_2}(F(x),F(x^2),F(x^3)...)))
+\end{equation}
+The only difference here is that we are using \(F(x,y)\) rather than \(F(x)\) and we have a \(y\) in the final term. This \(y\) comes from the fact that when we add two planted trees we are creating a branch node so we must increase the branch node count by one. 
+
+We already know the cycle index for \(S_2\) so we can jump straight to the final functional equation:
+\begin{equation}
+F(x,y)=x^2+ xF(x,y)+\frac{y}{2}F^2(x,y)+\frac{y}{2}F(x^2,y^2)
+\end{equation}
+Now, just as we did before we will plug in our generating function for \(F(x,y)\) to find a recursive relationship for the \(F_{nb}\)'s:
+\begin{equation}
+\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^b =x^2+ x\Bigg(\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^b\Bigg)+\frac{y}{2}\Bigg(\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^b\Bigg)^2+\frac{y}{2}\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^{2n}y^{2b}
+\end{equation} 
+This equation can be easily simplifed as:
+\begin{equation}
+\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^b =x^2+ \sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^{n+1}y^b+\frac{1}{2}\sum_{\substack{b_1=0\\n_1=0}}^{\substack{\infty\\ \infty}}\sum_{\substack{b_2=0\\n_2=0}}^{\substack{\infty\\ \infty}} F_{n_1b_1}F_{n_2b_2} x^{n_1+n_2}y^{b_1+b_2+1}+\frac{1}{2}\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^{2n}y^{2b}
+\end{equation}
+Now we must equate like powers of x and y to get:
+\begin{equation}
+ F_{nb} x^ny^b =x^2+  F_{n-1,b} x^ny^b+\frac{1}{2}\sum_{\substack{j=0\\i=0}}^{\substack{n\\ b-1}} F_{ij}F_{n-i,b-1-j} x^ny^b+\frac{1}{2} F_{\frac{n}{2},\frac{b-1}{2}} x^ny^b
+\end{equation}
+Then we simply cancel the \(x^ny^b\) to get our final recursion for the planted trees:
+\begin{equation}
+ F_{nb}  =F_{n-1,b}+\frac{1}{2}\sum_{\substack{j=0\\i=0}}^{\substack{n\\ b-1}} F_{ij}F_{n-i,b-1-j}+\frac{1}{2} F_{\frac{n}{2}\frac{b-1}{2}}
+\end{equation}
+
+Then, just as before, we can build upon our knowledge of planted trees to get a relation for rooted trees with a certain number of branch nodes. We will be decorating the root node with 0, 1, 2, or 3 planted trees (Figure 8), this time being careful to insert a \(y\) when ever we create a branch node. Notice that we create a branch node when we add 3 planted trees to the root node but not when we add 0,1,or 2 planted trees. So, we may start to formulate our functional equation as:
+\begin{equation}
+R(x,y)=x\Big(1+\frac{F(x,y)}{x}+\frac{1}{x^2}Z_{S_2}(F(x,y),F(x^2,y^2)) +\frac{y}{x^3}Z_{S_3}(F(x,y),F(x^2,y^2),F(x^3,y^3))\Big)
+\end{equation}
+We can solve equation 51 for \(\frac{1}{x^2}(Z_{S_2}(F(x),F(x^2),F(x^3)...)))\) and substitute into equation 57 to get:
+\begin{equation}
+R(x,y)=x\Big(1+\frac{F(x,y)}{x}+\frac{F(x,y)}{yx^2} -\frac{1}{y}- \frac{F(x,y)}{xy}+\frac{y}{x^3}Z_{S_3}(F(x,y),F(x^2,y^2),F(x^3,y^3))\Big)
+\end{equation}
+Then, we can multiply through by the \(x\) and substitute in the cycle indicies to get:
+\begin{equation}
+R(x,y)=x+F(x,y)+\frac{F(x,y)}{xy}-\frac{x}{y}-\frac{F(x,y)}{y} +\frac{yF^3(x,y)}{6x^2}+\frac{yF(x^2,y^2)F(x,y)}{2x^2}+\frac{yF(x^3,y^3)}{3x^2}
+\end{equation}
+We can put in the appropriate generating functions to relate the coefficients:
+\begin{align}
+\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} R_{nb} x^ny^b= &
+\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^b+
+\frac{1}{xy}\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^b-
+\frac{1}{y}\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^b +
+\frac{y}{6x^2}\Bigg(\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^b\Bigg)^3 \nonumber \\
+&+\frac{y}{2x^2}\Bigg(\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^{2n}y^{2b}\Bigg)\Bigg(\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^b\Bigg)+
+\frac{y}{3x^2}\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^{3n}y^{3b}
+\end{align}
+This can then be simplified as:
+\begin{align}
+\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} R_{nb} x^ny^b= &
+\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^b+
+\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^{n-1}y^{b-1}-
+\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^ny^{b-1} \nonumber \\
+&+\frac{1}{6}\sum_{\substack{b_1=0\\n_1=0}}^{\substack{\infty\\ \infty}}\sum_{\substack{b_2=0\\n_2=0}}^{\substack{\infty\\ \infty}}\sum_{\substack{b_3=0\\n_3=0}}^{\substack{\infty\\ \infty}} F_{n_1b_1}F_{n_2b_2}F_{n_3b_3} x^{n_1+n_2+n_3-2}y^{b_1+b_2+b_3} \nonumber \\
+&+\frac{1}{2}\sum_{\substack{b_1=0\\n_1=0}}^{\substack{\infty\\ \infty}}\sum_{\substack{b_2=0\\n_2=0}}^{\substack{\infty\\ \infty}}  F_{n_1b_1}F_{n_2b_2}x^{2n_1+n_2-2}y^{2b_1+b_2+1}+
+\frac{1}{3}\sum_{\substack{b=0\\n=0}}^{\substack{\infty\\ \infty}} F_{nb} x^{3n-2}y^{3b+1}
+\end{align}
+And then we can equate like powers of x and y.
+\begin{align}
+ R_{nb} x^ny^b= & F_{nb} x^ny^b+ F_{n+1,b+1} x^ny^b- F_{n,b+1} x^ny^b 
++\frac{1}{6}\sum_{\substack{j_1=0\\i_1=0}}^{\substack{n+2\\ b-1}}\sum_{\substack{j_2=0\\i_2=0}}^{\substack{n+2-i_1\\ b-1-j_1}}F_{j_1i_1}F_{i_2j_2}F_{n+2-i_1-i_2,b-1-j_1-j_2} x^ny^b \nonumber \\
+&+\frac{1}{2}\sum_{\substack{j=0\\i=0}}^{\substack{n+2\\ b-1}} F_{ij}F_{\frac{n-i}{2},\frac{b-1-j}{2}}x^ny^b+
+\frac{1}{3} F_{\frac{n+2}{3},\frac{b-1}{3}} x^ny^b
+\end{align}
+Finally, we cancel all of the x's and y's on both sides to get our final relation for rooted trees:
+\begin{equation}
+\small
+ R_{nb}=  F_{nb}+ F_{n+1,b+1} - F_{n,b+1} 
++\frac{1}{6}\sum_{\substack{j_1=0\\i_1=0}}^{\substack{n+2\\ b-1}}\sum_{\substack{j_2=0\\i_2=0}}^{\substack{n+2-i_1\\ b-1-j_1}}F_{j_1i_1}F_{i_2j_2}F_{n+2-i_1-i_2,b-1-j_1-j_2} 
++\frac{1}{2}\sum_{\substack{j=0\\i=0}}^{\substack{n+2\\ b-1}} F_{ij}F_{\frac{n-i}{2},\frac{b-1-j}{2}}+
+\frac{1}{3} F_{\frac{n+2}{3},\frac{b-1}{3}} 
+\end{equation}
+
+Finally, we wish to find an equation for unrooted trees. If we recall the process we used earlier, we first rooted trees at different similarity classes of nodes and then rooted them as differen similarity classes of edges. Clearly niether of these processes changes the branch node count on the original unrooted tree because we are not changing the structure of the graph in any way. Rather we are just thinking about the same graph in different ways. We can simply alter equation 37 and sum over the set of trees with n nodes and b branch nodes, \(\mathscr{T}_{nb}\)
+\begin{equation}
+\sum_{g \in \mathscr{T}_{nb}} 1=\sum_{g \in \mathscr{T}_{nb}}p_g^*- \sum_{g \in \mathscr{T}_{nb}}(q_g^*-s_g)
+\end{equation}
+Then the logic flows in exactly the same way as it did before and we arrive at the functional equation
+\begin{equation}
+T(x,y)=R(x,y) -\frac{F^2(x,y)}{2x^2}+\frac{F(x^2,y^2)}{2x^2}
+\end{equation}
+Which gives us the recursive relation:
+\begin{equation}
+T_{nb}=R_{nb}-\sum_{\substack{j=0\\i=0}}^{\substack{n+2\\ b-1}}F_{ij}F_{n+2-i,b-j} + F_{\frac{n}{2}+1,\frac{b}{2}}
+\end{equation}
 \end{document}
