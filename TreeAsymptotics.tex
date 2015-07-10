@@ -1,0 +1,178 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\geometry{a4paper}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[mathscr]{euscript}
+\usepackage{amsthm}
+
+\title{Tree Asymptotics}
+\author{Clayton Ristow}
+\date{July 9 2015}
+
+\begin{document}
+\maketitle
+
+Now that we have established recursive formulas for trees, we wish to develop asymptotic forumla for the coefficients of our generating functions. An expression \(g_n\) is said to be asymptotic to a sequence \(a_n\) if 
+\begin{equation}
+\frac{g_n}{a_n} \to 1 \; \text{ as } \: n \to \infty
+\end{equation}
+In order to get at these asymptotic formulas, we will use the following theorem to rewrite our generating function and to generate approximate forms of the coefficients of the generating function:
+\newtheorem{theorem}{Theorem}
+\begin{theorem}
+Let \(H(x,y(x))\) be a complex vauled function that is analytic in a neighborhood of \((x_0,G(x_0))\). If the following conditions are met:
+\begin{enumerate}
+\item \(H(x_0,G(x_0))=0\)
+\item \(G(x)\) is analytic for \(|x|<|x_0|\) where \(x_0\) is the unique singularity of \(G(x)\)
+\item \(G(x_0)=\sum_{n=0}^\infty G_nx_0^n\)
+\item \(H(x,G(x))=0\) if \(|x|<|x_0|\)
+\item \(\left.\frac{\partial H}{\partial {y(x)}}\right|_{(x_0,G(x_0))} = 0\)
+\item \(\left.\frac{\partial^2 H}{\partial {y(x)}^2}\right|_{(x_0,G(x_0))} \neq 0\)
+\end{enumerate}
+Then
+\[G(x)=G(x_0) + \sum_{k=1}^\infty a_k(x_0-x)^{\frac{k}{2}}\]
+and if \(a_1 \neq 0\) then 
+\[G_n \to \sqrt{ \frac{a_1^2x_0}{4\pi}}x_0^{-n}n^{\frac{-3}{2}}\]
+or if \(a_1=0\) and \(a_3 \neq 0\) then 
+\[G_n \to \sqrt{\frac{9a_3^2x_0^3}{16\pi}}x_0^{-n}n^{\frac{-5}{2}}\]
+\end{theorem}
+
+To use this theorem we will think of our generating function as a function of complex numbers rather than meerly a power series to generate coefficients. Also note that conditions 2,3  require us to find an \(x_0\) such that for any number greater than \(x_0\) \(G(x)\) does not converge and then for any number less than or equal to \(x_0\) the series does converge. In other words, \(x_0\) is the radius f convergence for our generating function \(G(x)\)
+
+\section{Planted Trees}
+
+Let us begin by applying the above theorem to our functional equation for planted trees. But first we must show that all conditions are met. We must first define:
+\begin{equation}
+H(x,y) \equiv x^2+xy+\frac{y^2}{2}+\frac{F(x^2)}{2}-y
+\end{equation}
+Clearly from our functional equation \(y=F(x)\) is a unique solution to \(H=0\). But notice that \(H(x,F(x))\) is only zero if \(F(x)\) converges. Thus if we assume for the time being that there exists an \(x\) such that  \(F(x)\) actually does converge (we will show this is true). Then conditions 1 and 4  hold. Additionally, we can deduce that \(\partial_y H =0\). There is a theorem called the Implicit Function Theorem that states that if \(\partial_y H \neq 0\) then there exists a function \(y(x)\) that is a unique solution to \(H=0\) and \(y(x_0)\) is analytic. But we know this to not be true because \(F(x)\) is a unique solution to \(H=0\) and \(F(x)\) is not analyitc at \(x_0\) (different from convergent) so by contradiction we can conclude 
+\begin{equation}
+\frac{\partial H}{\partial y} =0 \; \text{when} \; y=F(x) \; \text{and} \; x=x_0
+\end{equation}
+ So condition 5 holds. Additionally, we can simply differentiate Equation 2 with respect to \(y\) twice to get 
+\begin{equation}
+\frac{\partial^2 H}{\partial y^2} = 1
+\end{equation}
+So condition 6 holds. All that remains to show are conditions 2 and 3. 
+
+We will first show that there are x's for which \(F(x)\) converges. We start by recalling the recursive relation for \(F_n\):
+\begin{equation}
+F_n=F_{n-1}+\frac{1}{2}\sum_{i=2}^{n-2}F_iF_{n-i}+\frac{1}{2}F_{\frac{n}{2}}
+\end{equation}
+We can adjust the relation by changing \(F_1\) to 1 rather than 0. Note that when this change is implemented, none of the other terms in the sqeuence will change. We may now include the \(F_{n-1}\) in the sum to get:
+\begin{equation}
+F_n=\frac{1}{2}\sum_{i=1}^{n-1}F_iF_{n-i}+\frac{1}{2}F_{\frac{n}{2}}
+\end{equation}
+Now we note that \(F_n\) is an increasing series. We can obvioulsy write:
+\[F_\frac{n}{2}<F_n\]
+which then implies that 
+\[\frac{1}{2}F_\frac{n}{2}<F_n-\frac{1}{2}F_\frac{n}{2}\]
+and then we may write
+\[\frac{1}{2}F_\frac{n}{2}<\frac{1}{2}\sum_{i=1}^{n-1}F_iF_{n-i}\]
+and we get that:
+\[F_n<\sum_{i=1}^{n-1}F_iF_{n-i}\]
+Since \(F_n\) is an increasing sequence we can write
+\begin{equation}
+F_n \leq \sum_{i=1}^{n-1}F_iF_{n-1-i}
+\end{equation}
+The sequence of numbers
+\begin{equation}
+C_n=\sum_{i=1}^{n-1}C_iC_{n-1-i} \quad \text{where } C_1=1
+\end{equation}
+is called the Catalan Numbers. Thier generating function \(C(x)\) has a known radius of convergence of \(\frac{1}{4}\). Since \(F_n \leq C_n \), we may then conclude by the Comparison Test that \(F(x)\) converges for all \(x \leq \frac{1}{4}\). This means that the radius of convergence of \(F(x)\), \(x_0\) must be 
+\[\frac{1}{4} \leq x_0\]
+Additionally, we know that in order for \(F(x_0)\) to have any chance of converging \(F_nx_0^n\) must go to zero so at the very least \(x_0 < 1\). So we may then put \(x_0\) in the interval:
+\begin{equation}
+\frac{1}{4}\leq x_0 < 1
+\end{equation}
+Then we can say that \(A\) is the set of numbers, x, such that \(F(x)\) converges. We have shown from Equation 9 that A is bounded above by 1  and nonempty so \(Sup(A)\) exists. We can then write:
+\begin{equation}
+x_0 \equiv Sup(A)
+\end{equation}
+
+We have shown that \(x_0\), the radius of convergence of \(F(x)\) exists. Now we will show how to compute it. By the Ratio Test the following is true for all x:
+\begin{itemize}
+\item if \(\frac{F_{n+1}x^{n+1}}{F_nx^n} \to r<1\) then \(\sum_{n=0}^\infty F_nx^n\) converges
+\item if \(\frac{F_{n+1}x^{n+1}}{F_nx^n} \to r>1\) then \(\sum_{n=0}^\infty F_nx^n\) diverges
+\end{itemize}
+So clearly the radius of convergence must be x such that \(\frac{F_{n+1}x^{n+1}}{F_nx^n} \to 1\). Thus,
+\[\frac{F_{n+1}x_0}{F_n} \to 1\]
+and then we may write
+\begin{equation}
+x_0=\lim_{n\to\infty} \frac{F_n}{F_{n+1}}
+\end{equation}
+
+ Finally we must show that \(\lim_{x\to x_0^-}F(x)\) exists. To do this we must simply show that \(F(x)\) is bounded above for all \(x<x_0\) since \(F(x)\) is clearly a mnotonically increasing function. To do this let us look at the functional equation:
+\begin{equation}
+F(x)=x^2+ xF(x)+\frac{1}{2}F^2(x)+\frac{1}{2}F(x^2)
+\end{equation}
+Let us assume \(0<x<x_0\). Then since \(F_n \geq 0\) for all n, \(x^2>0\), \(xF(x)>0\), and \(\frac{1}{2}F(x^2)>0\). So we may then simply write
+\begin{equation}
+F(x)>\frac{1}{2}F^2(x)
+\end{equation}
+And then it follows that
+\begin{equation}
+F(x)<2
+\end{equation}
+Thus F(x) is bounded above by 2 so  \(\lim_{x\to x_0^-}F(x)\) exists. It follows then that \(F(x_0)\) exists. Thus we may finally conclude that conditions 2 and 3 hold and we may finally apply Theorem 1 to F(x).
+
+Before we derive the asymptotic formula, it is convenient to find the value of \( F(x_0)\). To do this we first differentiate Eq. 2 with respect to y:
+\begin{equation}
+\frac{\partial H}{\partial y} = x+y-1
+\end{equation}
+and then we plug in our solution \(y=F(x)\) and evaluate at \(x_0\) to get:
+\begin{equation}
+\left.\frac{\partial H}{\partial y}\right|_{(x_0,F(x_0))} = x_0+F(x_0)-1
+\end{equation}
+and then if we remember condition 5 we can write:
+\begin{equation}
+F(x_0)=1-x_0
+\end{equation}
+
+We are finally ready to expand F(x) using Theorem 1:
+\begin{equation}
+F(x)=F(x_0)+\sum_{n=1}^\infty a_k(x_0-x)^{\frac{k}{2}}
+\end{equation}
+and differentiaing gives us
+\begin{equation}
+F'(x)=-\sum_{n=1}^\infty \frac{k}{2} a_k(x_0-x)^{\frac{k}{2}-1}
+\end{equation}
+we can combine the two in the following convenient way
+\begin{equation}
+F'(F(x_0)-F(x))=\frac{a_1^2}{2} + \mathscr{O}(x_0-x)
+\end{equation}
+So we can write
+\begin{equation}
+\lim_{x\to x_0}F'(F(x_0)-F(x))=\frac{a_1^2}{2}
+\end{equation}
+ But we also have another way of computing ths limit using our functional equation for \(F(x)\). If we differentiate this expression with respect to x we get
+\begin{equation}
+F'(x)=2x+F(x)+xF'(x)+F(x)F'(x)+xF'(x^2)
+\end{equation}
+which can be rearranged as
+\[F'(x)-F(x)F'(x)=2x+F(x)+xF'(x)+xF'(x^2)\]
+and then we can subtract \(x_0F\) from both sides to get
+\[F'(x)(F(x_0)-F(x))=2x+F(x)+xF'(x)-x_0F(x)+xF'(x^2)\]
+and we obtain the limit as
+\[\lim_{x\to x_0}F'(F(x_0)-F(x))=2x_0+F(x_0)+x_0F'(x_0^2)\]
+which simplfies to
+\begin{equation}
+\lim_{x\to x_0}F'(F(x_0)-F(x))=x_0(1+F'(x_0^2))+1
+\end{equation}
+Then combining equations 12 and 23 and solving for \(a_1\) we get
+\begin{equation}
+a_1=\sqrt{2(x_0(1+F'(x_0^2))+1)}
+\end{equation}
+And we can obtain our final asyptotic formula by plugging \(a_1\) into Theorem 1 and simplfying:
+\begin{equation}
+F_n \approx \sqrt{\frac{x_0^2(1+F'(x_0^2))+x_0}{2\pi}}x_0^{-n}n^{-3/2}
+\end{equation}
+\(x_0\) and \(F(x_0^2)\) can be approximated by calculating them with the power series for \(F(x)\) out to as many terms as we want. When we do that we can plug the results into Eq. 25 to get 
+\begin{equation}
+F_n \approx .318777(.40269)^{-n}n^{-3/2}
+\end{equation}
+
+\end{document}
