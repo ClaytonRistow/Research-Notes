@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.30)  9 JUL 2015 23:32
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.30)  20 JUL 2015 13:06
 entering extended mode
 **C:/Users/Clayton/Documents/GitHub/Research-Notes/TreeAsymptotics.tex
 (C:/Users/Clayton/Documents/GitHub/Research-Notes/TreeAsymptotics.tex
@@ -445,34 +445,84 @@ LaTeX Font Info:    Try loading font information for U+eus on input line 145.
  (C:\texmf\tex\latex\amsfonts\ueus.fd
 File: ueus.fd 2013/01/14 v3.01 Euler Script
 )
-[3] [4] (C:\Users\Clayton\Documents\GitHub\Research-Notes\TreeAsymptotics.aux) 
-) 
+[3]
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 195.
+
+LaTeX Font Info:    Calculating math sizes for size <> on input line 197.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <> not available
+(Font)              size <5> substituted on input line 197.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 197.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 197.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <> not available
+(Font)              size <5> substituted on input line 197.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.7> not available
+(Font)              size <5> substituted on input line 197.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.5> not available
+(Font)              size <5> substituted on input line 197.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <> not available
+(Font)              size <5> substituted on input line 197.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 197.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 197.
+
+[4] [5] [6] [7]
+(C:\Users\Clayton\Documents\GitHub\Research-Notes\TreeAsymptotics.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 4.5pt have occurred.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2195 strings out of 493921
- 24587 string characters out of 3154895
- 84472 words of memory out of 3000000
- 5463 multiletter control sequences out of 15000+200000
- 17418 words of font info for 52 fonts, out of 3000000 for 9000
+ 2231 strings out of 493921
+ 25012 string characters out of 3154895
+ 89472 words of memory out of 3000000
+ 5494 multiletter control sequences out of 15000+200000
+ 22663 words of font info for 73 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,32p,828b,199s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
-\ecbx1440.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknapp
-en\ec\dpi600\ecti1000.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\l
-jfour\jknappen\ec\dpi600\ecbx1000.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2.
-9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\Clayton\AppData\Loc
-al\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Clayton
-\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1728.pk><C:/te
-xmf/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/texmf/fonts/type1/public/amsf
-onts/cm/cmmi10.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/texmf
-/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/texmf/fonts/type1/public/amsfonts
-/cm/cmr10.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/texmf/fonts
-/type1/public/amsfonts/cm/cmr7.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cms
-y10.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/texmf/fonts/type
-1/public/amsfonts/cm/cmsy7.pfb><C:/texmf/fonts/type1/public/amsfonts/euler/eusm
-10.pfb>
-Output written on TreeAsymptotics.pdf (4 pages, 161302 bytes).
+ 27i,9n,32p,828b,199s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
+0\ecrm0900.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
+pen\ec\dpi600\ecbx1440.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\
+ljfour\jknappen\ec\dpi600\ecti1000.pk> <C:\Users\Clayton\AppData\Local\MiKTeX\2
+.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1000.pk> <C:\Users\Clayton\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\Clayto
+n\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\
+Users\Clayton\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1
+728.pk><C:/texmf/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/texmf/fonts/type
+1/public/amsfonts/cm/cmmi10.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmmi5.
+pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/texmf/fonts/type1/pu
+blic/amsfonts/cm/cmmi9.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+C:/texmf/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/texmf/fonts/type1/public/a
+msfonts/cm/cmr6.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/texmf
+/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/texmf/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/texmf/font
+s/type1/public/amsfonts/cm/cmsy6.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/c
+msy7.pfb><C:/texmf/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/texmf/fonts/typ
+e1/public/amsfonts/euler/eusm10.pfb>
+Output written on TreeAsymptotics.pdf (7 pages, 227507 bytes).
 PDF statistics:
- 223 PDF objects out of 1000 (max. 8388607)
+ 275 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

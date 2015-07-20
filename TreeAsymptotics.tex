@@ -145,15 +145,15 @@ we can combine the two in the following convenient way
 F'(F(x_0)-F(x))=\frac{a_1^2}{2} + \mathscr{O}(x_0-x)
 \end{equation}
 So we can write
-\begin{equation}
-\lim_{x\to x_0}F'(F(x_0)-F(x))=\frac{a_1^2}{2}
-\end{equation}
+\[\lim_{x\to x_0}F'(F(x_0)-F(x))=\frac{a_1^2}{2}\]
  But we also have another way of computing ths limit using our functional equation for \(F(x)\). If we differentiate this expression with respect to x we get
 \begin{equation}
 F'(x)=2x+F(x)+xF'(x)+F(x)F'(x)+xF'(x^2)
 \end{equation}
 which can be rearranged as
-\[F'(x)-F(x)F'(x)=2x+F(x)+xF'(x)+xF'(x^2)\]
+\begin{equation}
+F'(x)-F(x)F'(x)=2x+F(x)+xF'(x)+xF'(x^2)
+\end{equation}
 and then we can subtract \(x_0F\) from both sides to get
 \[F'(x)(F(x_0)-F(x))=2x+F(x)+xF'(x)-x_0F(x)+xF'(x^2)\]
 and we obtain the limit as
@@ -172,7 +172,147 @@ F_n \approx \sqrt{\frac{x_0^2(1+F'(x_0^2))+x_0}{2\pi}}x_0^{-n}n^{-3/2}
 \end{equation}
 \(x_0\) and \(F(x_0^2)\) can be approximated by calculating them with the power series for \(F(x)\) out to as many terms as we want. When we do that we can plug the results into Eq. 25 to get 
 \begin{equation}
-F_n \approx .318777(.40269)^{-n}n^{-3/2}
+F_n \approx .3187766(.4026975)^{-n}n^{-3/2}
 \end{equation}
 
+\section{Rooted Trees}
+We will now apply the same techniques to approximate rooted trees. Before we apply Theorem 1, we must first confirm that all 6 conditions are met. Recall the functional equation for rooted trees:
+\begin{equation}
+R(x)=\frac{F(x)}{x} +\frac{F^3(x)}{6x^3}+\frac{F(x^2)F(x)}{2x^2}+\frac{F(x^3)}{3x^2}
+\end{equation}
+First let us redefine \(H(x,y)\) for rooted trees. 
+\begin{equation}
+H(x,y)= \frac{F(x)}{x} +\frac{F^3(x)}{6x^3}+\frac{F(x^2)F(x)}{2x^2}+\frac{F(x^3)}{3x^2} -y
+\end{equation}
+We can see that \(y=R(x)\) is a unique solution and \(R(x)\) is not analytic at its radius of convergence (We will show this value is \(x_0\)). So by the Implicit Function Theorem, condition 5 holds (just as it did for planted trees). Similarly, condition 6 holds as well. 
+Then we can show that the radius of convergence of \(R(x)\) is \(x_0\). \(R(x)\) clearly converges if \(F(x)\), \(F(x^2)\), and \(F(x^3)\) all converge. From the previous section on planted trees we know that \(F(x)\) converges for \(x \leq x_0\),  \(F(x^2)\) converges for \(x \leq \sqrt{x_0}\), and  \(F(x^3)\) converges for \(x \leq \sqrt[3]{x_0}\). Since \(x_0 < 1\),  \(x_0 < \sqrt{x_0}<\sqrt[3]{x_0}\) so \(F(x)\), \(F(x^2)\), and \(F(x^3)\) will all convergeif and only if \(x \leq x_0\). Then we can conclude that \(R(x)\) converges for all \(x \leq x_0\). Incedentally this shows that conditions 1, 2, 3, 4, hold. 
+	So we may apply Theorem 1 and expand R(x) as 
+\begin{equation}
+R(x)=R(x_0)+\sum_{n=1}^\infty b_k(x_0-x)^{\frac{k}{2}}
+\end{equation}
+	We wish to find the value of \(b_1\) to generate our asymptotic formula. To do this we will use Eq. 27 to relate Eq. 29 to Eq. 18. More specically, we will differentiate Eq. 27  to relate the the differentiated expansions. When we differentiate Eq. 27 we get:
+\begin{equation}
+\small
+R'(x)=\frac{F'(x)}{x}-\frac{F(x)}{x^2}+\frac{F^2(x)F'(x)}{2x^2}-\frac{F^3(x)}{3x^2}+\frac{F'(x)F(x^2)}{2x^2}+\frac{F(x)F'(x^2)}{x}-\frac{F(x)F(x^2)}{x^3}+F'(x^3)-\frac{2F(x^3)}{3x^3}
+\end{equation}
+ If we were to differentiate Eq. 29 and Eq. 18 we get 
+\begin{equation}
+R'(x)= -\frac{1}{2}b_1(x_0-x)^{-1/2}-b_2-\frac{3}{2}b_3(x_0-x)^{1/2}...
+\end{equation}
+and
+\begin{equation}
+F'(x)= -\frac{1}{2}a_1(x_0-x)^{-1/2}-a_2-\frac{3}{2}a_3(x_0-x)^{1/2}...
+\end{equation}
+Notice that as \(x \to x_0\) every term goes to zero except for the first two in the two expansions. Additionally, the first term blows up as \(x \to x_0\). So we know that \(F'(x)\) and \(R'(x)\) are diverge at \(x=x_0\). Thus as \(x \to x_0\) the terms that have a \(F'(x)\) will dominate so we can ignore all the other terms. So we write:
+\[\lim_{x \to x_0}R'(x)=\lim_{x\to x_0} F'(x)\left(\frac{1}{x}+\frac{F^2(x))}{2x^2}+\frac{F(x^2)}{2x^2}\right)\] 
+which can be simplified using Eq. 12 as 
+\begin{equation}
+\lim_{x \to x_0}R'(x)=\lim_{x\to x_0} F'(x)\left(\frac{1}{x}+\frac{F(x)-x^2-xF(x)}{x^2}\right)
+\end{equation} 
+While \(F'(x)\) and \(R'(x)\) diverge the portion in the parenthesis converges. So we may substitute in the first term in the expansions for \(F'(x)\) and \(R'(x)\) into Eq. 33 to get that 
+\[\lim_{x \to x_0}\frac{1}{2}b_1(x_0-x)^{-1/2}=\lim_{x\to x_0}\frac{1}{2}a_1(x_0-x)^{-1/2}\left(\frac{1}{x_0}+\frac{F(x_0)-x_0^2-x_0F(x_0)}{x^2}\right)\]
+We can cancel and simplify using Eq. 17 to get
+\begin{equation}
+b_1=a_1 \left(\frac{1-x_0}{x_0^2}\right)
+\end{equation}
+and we get the following expression for our Asymptotic expression for rooted trees. 
+\begin{equation}
+R_n \approx \left(\frac{1-x_0}{x_0^2}\right)a_1\sqrt{\frac{x_0}{2\pi}}x_0^{-n}n^{-3/2} \approx \left(\frac{1-x_0}{x_0^2}\right)F_n
+\end{equation}
+and we can approximate these constants and get 
+\begin{equation}
+R_n \approx 1.174148(.4026975)^{-n}n^{-3/2}
+\end{equation}
+
+
+ \section{General Trees}
+Finally, we will apply this theorem to general trees to get an Asymptotic formula. The functional equation for general trees is
+\begin{equation}
+T(x)=R(x)-\frac{F^2(x)}{2x^2}+\frac{F(x^2)}{2x^2}
+\end{equation}
+ At this point it is obvious that all 6 conditions are met and that \(T(x)\) converges if and only if \(x \leq x_0\) because \(T(x)=T(F(x),F(x^2),F(x^3),x)\). So we may immedately apply our Theorem to get the expansion:
+\begin{equation}
+T(x)=T(x_0)+\sum_{n=1}^\infty c_k(x_0-x)^{\frac{k}{2}}
+\end{equation}
+We will find \(c_1\) in the same way we found \(b_1\). We will relate it to \( b_1\) and \(a_1\). We first differentiate Eq. 37 to get:
+\begin{equation}
+T'(x)=R'(x)-\frac{F(x)F'(x)}{x^2}+\frac{F^2(x)}{x^3}+\frac{F'(x^2)}{x}-\frac{F(x^2)}{x^3}
+\end{equation}
+Then we can put in the expansions and take the limit as \(x \to x_0\) to get:
+\[\frac{c_1}{2}(x_0-x)^{-1/2}=\frac{b_1}{2}(x_0-x)^{-1/2}-\frac{a_1F(x_0)}{2x_0^2}(x_0-x)^{-1/2}\]
+and then we simplify to get
+\[c_1=b_1-\frac{a_1(1-x_0)}{x_0^2}\]
+and then if we remember Eq. 34 then clearly
+\begin{equation}
+c_1=0
+\end{equation}
+
+Then according to Theorem 1 we must use the second approximation using \(c_3\). So our task now becomes finding \(c_3\). We will do this by doing a few clever tricks and then taking the second derivaitve of \(T(x)\) to get \(c_3\) perfectly interms of \(a_1\). 
+We start by using Eq.30 to rewrite Eq. 39 as 
+\begin{align}
+T'(x)=& \frac{F'(x)}{x}-\frac{F(x)}{x^2}+\frac{F^2(x)F'(x)}{2x^2}-\frac{F^3(x)}{3x^2}+\frac{F'(x)F(x^2)}{2x^2}+\frac{F(x)F'(x^2)}{x}-\frac{F(x)F(x^2)}{x^3}\nonumber \\
+&+  F'(x^3)-\frac{2F(x^3)}{3x^3}-\frac{F(x)F'(x)}{x^2}+\frac{F^2(x)}{x^3}+\frac{F'(x^2)}{x}-\frac{F(x^2)}{x^3}
+\end{align}
+We can gather all of the terms with an \(F'(x)\) in them and write
+\[T'(x)=F'(x)\left(\frac{1}{x}+\frac{1}{x^2}\left(\frac{F^2(x)}{2}+\frac{F(x^2)}{2}-F(x)\right)\right)+...\]
+which can be simplifed using Eq. 12 as 
+\[T'(x)=F'(x)\left(\frac{1-x-F(x)}{x}\right)+...\]
+and finally we can see that we can simplify Eq. 22 be subtracting \(xF'(x)\) from both sides to get
+\begin{equation}
+F'(x)(1-x-F(x))=2x+F(x)+xF'(x^2)
+\end{equation}
+ We can plug this in to get an expression for T'(x) with no mention of F'(x).
+\begin{align}
+T'(x)= & 2+\frac{F(x)}{x}+F'(x^2)-\frac{F(x)}{x^2}-\frac{F^3(x)}{3x^2}+\frac{F(x)F'(x^2)}{x}-\frac{F(x)F(x^2)}{x^3}\nonumber \\
+&+ F'(x^3)-\frac{2F(x^3)}{3x^3}+\frac{F^2(x)}{x^3}+\frac{F'(x^2)}{x}-\frac{F(x^2)}{x^3}
+\end{align}
+Now we may take the second derivative. Since there are no \(F'(x)\) terms we will not get any \(F''(x)\) terms in the second derivative. This means that all terms in the second derivative will converge as \(x \to x_0\) except those containing \(F'(x)\) (where as if there were terms with \(F''(x)\) these two would diverge complicating our ananlysis). This means that when we look at what happens as \(x \to x_0\) we will only care about the divergent \(F'(x)\) terms. So for simplicities sake I will leave out all terms in the second derivative that dont contain an \(F'(x)\). We get
+\begin{equation}
+T''(x)=\frac{F'(x)}{x}-\frac{F'(x)}{x^2}-\frac{F^2(x)F'(x)}{x^3}+\frac{F'(x)F'(x^2)}{x}-\frac{F'(x)F(x^2)}{x^3}+\frac{2F(x)F'(x)}{x^3}
+\end{equation}
+which can be rewritten as 
+\begin{equation}
+T''(x)=F'(x)\left(\frac{1}{x}(1+F'(x^2))-\frac{1}{x^2}+\frac{2}{x^3}\left(F(x)-\frac{F^2(x)}{2}-\frac{F(x^2)}{2}\right)\right)+...
+\end{equation}
+Then we may take the limit as \(x \to x_0\) and substitute in Eq. 12 and Eq. 24 to get
+\[\lim_{x \to x_0} T''(x)=\lim_{x \to x_0} F'(x) \left(\frac{1}{x_0^2}\left(\frac{a_1^2}{2}-2\right)+\frac{2}{x_0^3}(x_0+x_0F(x_0)\right)\]
+and the we may substitute in the expansions for \(T''(x)\) and \(F'(x)\) to get
+\[\frac{3c_3}{4}(x_0-x)^{-1/2}=\left(\frac{a_1}{2}(x_0-x)^{-1/2}\right)\left(\frac{\frac{a_1^2}{2}-2+2x_0+2-2x_0}{x_0^2}\right)\]
+which can be simplified to simply
+\begin{equation}
+c_3=\frac{a_1^3}{3x_0^2}
+\end{equation}
+Then, according to Theorem 1 our asymptotic formula for \(T_n\) is
+\begin{equation}
+T_n \approx \frac{a_1^3}{4\sqrt{\pi x_0}}x_0^{-n}n^{-5/2}
+\end{equation}
+Then, if we plug in our values for \(a_1\) and \(x_0\) becomes
+\begin{equation}
+T_n \approx 1.255109(.4026975)^{-n}n^{-5/2}
+\end{equation}
+
+\section{Entropy}
+We are finally in a position where we may extract som thermodynamic variables. Specifically we can immediately calculate entropy. The it is well known that the Entropy of a system may be calculated as
+\begin{equation}
+S=k_B \ln{\Omega}
+\end{equation}
+where \(\Omega\) is the multiplicity. What we have been doing this whole time, enumerating trees, is really just calculating the multiplicity of trees with n nodes. Now that we have the asymptotic formulas rather than the recursive ones, we have the multiplicity in a form that fits very nicely into Eq. 49. So if we plug in Eq. 26, Eq. 36, and Eq 48, we can get expressions for the entropy of Planted, Rooted, and most importantly General Trees respectively. after simplfication we arrive at
+\begin{equation}
+S_{PT}=k_B\left(.90957n-\frac{3}{2}\ln{n}-1.14326\right)
+\end{equation}
+\begin{equation}
+S_{RT}=k_B\left(.90957n-\frac{3}{2}\ln{n}+.160543\right)
+\end{equation}
+\begin{equation}
+S_{T}=k_B\left(.90957n-\frac{5}{2}\ln{n}+.227222\right)
+\end{equation}
+It is useful to note the accuracy of these approximations. For general trees the error in the approximation for \(n=1000\) is .180727\%. Thus the error in the entropy is \(+k_B\ln{1.00180727}\) which is \(.00187k_B\). If we use our approximation to the entropy to calculate the entropy for general trees with 1000 nodes we get
+\[S_T=892.5278k_B\]
+and then we can easily calulate the percent error in the entropy to be .0002095\% for \(n=1000\). As we increase the node count this error will obviously decrease so we can conclude that:
+
+If \(n\geq 1000\) the percent error in the entropy for general trees is less than .00021\%
+
+
+
 \end{document}
+
