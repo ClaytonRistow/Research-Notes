@@ -1,0 +1,177 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\geometry{a4paper}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[mathscr]{euscript}
+\usepackage{amsthm}
+
+\title{Branch Node Asymptotics and the Grand Partition Function}
+\author{Clayton Ristow}
+\date{July 27 2015}
+
+\begin{document}
+\maketitle
+
+Our next task is to apply our asymptotic techniques to our branch node counting series. These series had mulitvariate generating functions of the form
+\begin{equation}
+F(x,y)=\sum_{n=0}^\infty\sum_{b=0}^\infty F_{nb}x^ny^b
+\end{equation}
+We wish to treat this gerenating function as a single variate generating function so we will consolidate the like terms of x to and rewrite equation 1 as:
+\begin{equation}
+F(x,y)=\sum_{n=0}^\infty\left(\sum_{b=0}^\infty F_{nb}y^b\right)x^n
+\end{equation}
+To highlight this single variable quality we will rewrite our generating function using the following notations
+\begin{equation}
+F_y(x)\equiv\sum_{n=0}^\infty F_n(y)x^n =F(x,y)
+\end{equation}
+\begin{equation}
+F_n(y) \equiv \sum_{b=0}^\infty F_{nb}y^b
+\end{equation}
+We can give some physical meaning to these new coefficients \(F_n(y)\). First we note that \(F_n(1)=F_n\) where \(F_n\) are the coefficients of the non-branch-node-counting series. We can begin to think of y as some sort of exponential weighting factor that is dependent on the number of branch nodes. It makes sence to interpret the value of y as the exponentiated energy that it takes to create a branch point. This energy is clearly the chemical potential of a branch point which we will call \(\mu_b\). Then we may make thermal interpretation of the value of y as the boltzmann weighted chemical potential which is a value called the fugocity. 
+\begin{equation}
+y=e^{\frac{\mu_b}{k_BT}}
+\end{equation}
+Clearly, y=1 corresponds to \(\mu_b=0\) meaning it takes no energy to create or remove a branch node which was an assumption we made when computing the partition function \(T_n\). 
+These new coefficients \(F_n(y)\) are a generalization on on our non-branch-counting partition function \(F_n\). The number of branch nodes is not assumed to be fixed. Rather, we associate a chemical potential with the creation or destruction of a branch node. This means that \(F_n(y)\) is a Grand Partition Function in terms of the number of branch points. 
+
+For convenience I will rewrite Thoerem 1 here:
+\newtheorem{theorem}{Theorem}
+\begin{theorem}
+Let \(H(x,y(x))\) be a complex vauled function that is analytic in a neighborhood of \((x_0,G(x_0))\). If the following conditions are met:
+\begin{enumerate}
+\item \(H(x_0,G(x_0))=0\)
+\item \(G(x)\) is analytic for \(|x|<|x_0|\) where \(x_0\) is the unique singularity of \(G(x)\)
+\item \(G(x_0)=\sum_{n=0}^\infty G_nx_0^n\)
+\item \(H(x,G(x))=0\) if \(|x|<|x_0|\)
+\item \(\left.\frac{\partial H}{\partial {y(x)}}\right|_{(x_0,G(x_0))} = 0\)
+\item \(\left.\frac{\partial^2 H}{\partial {y(x)}^2}\right|_{(x_0,G(x_0))} \neq 0\)
+\end{enumerate}
+Then
+\[G(x)=G(x_0) + \sum_{k=1}^\infty a_k(x_0-x)^{\frac{k}{2}}\]
+and if \(a_1 \neq 0\) then 
+\[G_n \to \sqrt{ \frac{a_1^2x_0}{4\pi}}x_0^{-n}n^{\frac{-3}{2}}\]
+or if \(a_1=0\) and \(a_3 \neq 0\) then 
+\[G_n \to \sqrt{\frac{9a_3^2x_0^3}{16\pi}}x_0^{-n}n^{\frac{-5}{2}}\]
+\end{theorem}
+
+\section{Planted Trees}
+We start our branch node asymptotic analysis with Planted trees. Before we apply the thoerem we must ensure that all 6 conditions are met. First will define the function \(H_y(x,z)\) to be
+\begin{equation}
+H_y(x,z)=x^2+xz+\frac{yz^2}{2}+\frac{yF_{y^2}(x^2)}{2}-z
+\end{equation}
+If we recall the functional equation for \(F_y(x)\):
+\begin{equation}
+F_y(x)=x^2+ xF_y(x)+\frac{y}{2}F_y^2(x)+\frac{y}{2}F_{y^2}(x^2)
+\end{equation}
+Then clearly \(z=F_y(x)\) is a solution to the equation \(H=0\) when \(F_y(x)\) converges. So if we can show that \(F_y(x)\) converges if \(|x| \leq x_0(y)\) for some value \(x_0(y)\) that is the radius of converge of \(F_y(x)\) then we will have shown that conditions 1, 2, 3, and 4 hold. 
+	We will begin by showing that \(x_0(y)\) exists for all y. There are three possible cases: \(y<1 , y>1, y=1\). The \(y=1\) is trivial. We have shown that \(F_1(x)=F(x)\) and we showed previously that \(F(x)\) converges for all \(x \leq x_0=.4026975...\). The \(y<1\) is also quite simple. When \(y<1\) the \(F_{nb}y^b < F_{nb}\) so it follows that 
+\[\sum_{b=0}^n F_{nb}y^b<\sum_{b=0}^n F_{nb}\] so we can conclude that 
+\begin{equation}
+F_n(y)<F_n \quad \text{ for all } n \, \text{ if } y<1
+\end{equation}
+So clearly \(F_y(x)\) will converge for \(x_0=.4026975...\) So. 
+\begin{equation}
+.4026975...\leq x_0(y) < 1 \quad \text{ if } y \leq 1
+\end{equation} 
+Thus \(x_0(y)\) exists for \(y \leq 1\)
+Finally, we must deal with the y>1 case. First will will briefly show that if \(b \geq \frac{n}{2}\) then \(F_{nb}=0\). We will start by defining c to be the number of nodes with 2 branches and e to be the number of nodes with one branch (end nodes).Then clearly we may write for any tree.
+\begin{equation}
+b + c + e = n
+\end{equation}
+we can also note that whenever we add another branch point we nessessarily create another end point. Combining this observation with the fact that a tree with no branch points has two end points, we may wirte for all trees that. 
+\begin{equation}
+b + 2= e
+\end{equation}
+we may combine Eq. 10 and Eq. 11 to get
+\begin{equation}
+2b=n-c-2
+\end{equation}
+now we wish to maximize our branch point. To do this we can simply set \(c=0\) in Eq. 12 and then we get \(2b=n-2\) or more simply
+\begin{equation}
+b<\frac{n}{2}
+\end{equation}
+This means there are no trees where the number of branch points is \(\frac{n}{2}\) or higher. So we can conculde that if \(b \geq \frac{n}{2}\) then \(F_{nb}=0\).
+now let us turn back to the case where \(y>1\) let us choose \(x=\frac{x_0}{y}\) where \(x_0 =.4026975\). Then
+\begin{equation}
+F_n(y)x^n=\left(\sum_{b=0}^nF_{nb}y^b\right)\left(\frac{x_0}{y}\right)^n
+\end{equation}
+But since \(F_{nb}=0\) if \(b \geq \frac{n}{2}\) we can write
+\begin{equation}
+F_n(y)x^n=\left(\sum_{b=0}^{n/2}F_{nb}y^b\right)\left(\frac{x_0}{y}\right)^n=\left(\sum_{b=0}^{n/2}F_{nb}y^{b-n}\right)x_0^n
+\end{equation}
+Then since \(b<\frac{n}{2}<n\) and y>1, it follows that \(y^{b-n}<1\) so 
+\begin{equation}
+\left(\sum_{b=0}^{n/2}F_{nb}y^{b-n}\right)x_0^n<F_nx_0^n
+\end{equation}
+Then by the comparison test \(F_y(\frac{x_0}{y})\) converges if \(y>1\). so we can conclude that
+\begin{equation}
+\frac{x_0}{y}\leq x_0(y) <1 \quad \text { if } y >1
+\end{equation}
+So we have finally shown that \(x_0(y)\) exists for all y. This shows that \(F_y(x)\) converges if \(x<x_0(y)\). It remains to show that \(F_y(x)\) converges at \(x=x_0(y)\). To show this we will show that 
+\[\lim_{x \to x_0(y)^-}F_y(x) \; \text{exists}\]
+Since the power series \(F_y(x)\) always has positive coefficents and positive powers of x, it is a monotonically increasing function so to show that this limit exists we must simply show that \(F_y(x)\) is bounded above. It follows from the functional equation that 
+\[F_y(x)>\frac{y}{2}F_y^2(x)\]
+Which then implies that 
+\begin{equation}
+\frac{2}{y}>F_y(x)
+\end{equation}
+thus \(F_y(x)\) is bounded above so the limit exists and therefore \(F_y(x_0(y))\) converges. 
+Combining all of these results, we get that 
+\begin{equation}
+F_y(x) \, \text{ converges if } |x|\leq x_0(y)
+\end{equation}
+which shows that conditions 1, 2, 3, and 4 are all met. 
+
+Condition 5 is shown using the same proof by contradiction using the Implicit Function Theorem that we used for the non-branch-node-counting series. Condition 6 is shown by differentiating Eq 6 with respect to z twice to get
+\begin{equation}
+\frac{\partial^2 H}{\partial z^2}=y
+\end{equation}
+If we think of y as the fugosicty (\(e^\frac{\mu_b}{k_BT}\)) it is clear that no possible values of \(\mu_b\) or \(T\) will result in a value of 0 for y so condition 6 holds.
+
+Before we fully apply the theorem let us an expression for \(F_y(x_0(y))\). We can differentiate Eq. 6 and then apply condition 5 to get
+\begin{equation}
+0=x_0+yF_y(x_0(y))-1
+\end{equation}
+which can be rearraged to get
+\begin{equation}
+F_y(x_0(y))=\frac{1-x_0(y)}{y}
+\end{equation}
+Now we may apply Theorem 1 and expand \(F_y(x)\) as:
+\begin{equation}
+F_y(x)=F_y(x_0(y))+\sum_{k=1}^\infty a_k(x_0-x)^{k/2}
+\end{equation}
+Then if we differentiate this expansion we get:
+\begin{equation}
+F'_y(x)=-\sum_{k=1}^\infty \frac{ka_k}{2}(x_0-x)^{k/2-1}
+\end{equation}
+Then we may combine Eq. 23 and Eq. 24 to get:
+\[F'_y(x)(F_y(x_0(y))-F_y(x))=\frac{a_1^2}{2}+\mathscr{O}(x_0-x)\]
+Then if we take the limit as \(x \to x_0(y)\) we get that 
+\begin{equation}
+\lim_{x \to x_0(y)}F'_y(x)(F_y(x_0(y))-F_y(x))=\frac{a_1^2}{2}
+\end{equation}
+But we may also differentiate Eq. 7, plug in Eq. 22, and rearrange to get:
+\begin{equation}
+\lim_{x \to x_0(y)}F'_y(x)(F_y(x_0(y))-F_y(x))=\frac{2yx_0(y)+1-x_0(y)+x_0(y)y^2F'_{y^2}(x_0^2(y))}{y^2}
+\end{equation}
+Then we can combine Eq. 25 and Eq. 26 and solve for \(a_1\) to get
+\begin{equation}
+a_1=\frac{1}{y}\sqrt{2(1+x_0(y)(y^2F'_{y^2}(x_0^2(y))+2y-1))}
+\end{equation}
+So then by Theorem 1, we can write our asymptotic form as 
+\begin{equation}
+F_n(y) \approx \sqrt{\frac{x_0(y)+x_0^2(y)(y^2F'_{y^2}(x_0^2(y))+2y-1)}{2\pi y^2}} x_0^{-n}(y)n^{-3/2}
+\end{equation}
+
+There is still one problem. The method we used for findning the radius of convergence, taking the limit of the ration of the terms, takes 10,000 terms to get with in 3 decimal places of accuracy. Now that computing the coefficients involes a sum (see Eq. 4). so computing these coeffieients to very high n becomes unresonable. We need a way to find the radius of convergence of \(F_y(x)\) using as few terms as possible. Let us plug in \(x_0(y)\) for x in Eq. 6.
+\[F_y(x_0(y))=x_0(y)^2+x_0(y)F_y(x_0(y))+\frac{y}{2}F_y^2(x_0(y))+\frac{y}{2}F_{y^2}(x_0^2(y))\]
+And then we can substitute in Eq. 22 and reaarrange to get the following equation:
+\begin{equation}
+F_{y^2}(x_0^2(y))=\frac{1+2x_0(y)+(1-2y)x_0^2(y)}{y^2}
+\end{equation}
+We can use Mathematica to numerically solve this equation for \(x_0(y)\) and get more accurate answers by adding more terms on to the power series \(F_{y^2}(x_0^2(y))\). This method only requires 10 terms in the power series to get 6 decimal places of accuracy. This huge jump in accuracy is due to the fact \(x_0^2(y)\) is well inside the radius of convergence so we can get a very accurate estimate of \((F_{y^2}(x_0^2(y)\)) with just a few terms and by substituting Eq. 22 in we get an exact value for \(F_y(x_0(y))\). all of this results in a quick and easy method for finding \(x_0(y)\) for each y.
+\end{document}
