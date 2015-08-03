@@ -173,5 +173,147 @@ And then we can substitute in Eq. 22 and reaarrange to get the following equatio
 \begin{equation}
 F_{y^2}(x_0^2(y))=\frac{1+2x_0(y)+(1-2y)x_0^2(y)}{y^2}
 \end{equation}
-We can use Mathematica to numerically solve this equation for \(x_0(y)\) and get more accurate answers by adding more terms on to the power series \(F_{y^2}(x_0^2(y))\). This method only requires 10 terms in the power series to get 6 decimal places of accuracy. This huge jump in accuracy is due to the fact \(x_0^2(y)\) is well inside the radius of convergence so we can get a very accurate estimate of \((F_{y^2}(x_0^2(y)\)) with just a few terms and by substituting Eq. 22 in we get an exact value for \(F_y(x_0(y))\). all of this results in a quick and easy method for finding \(x_0(y)\) for each y.
+We can use Mathematica to numerically solve this equation for \(x_0(y)\) and get more accurate answers by adding more terms on to the power series \(F_{y^2}(x_0^2(y))\). This method only requires 10 terms in the power series to get 6 decimal places of accuracy. This huge jump in accuracy is due to the fact \(x_0^2(y)\) is well inside the radius of convergence so we can get a very accurate estimate of \((F_{y^2}(x_0^2(y)\)) with just a few terms and by substituting Eq. 22 in we get an exact value for \(F_y(x_0(y))\). All of this results in a quick and easy method for finding \(x_0(y)\) for each y.
+
+\section{General Trees} 
+We now turn our attention to general trees. Again, we will use the notations
+\begin{equation}
+T_y(x)\equiv T(x,y) 
+\end{equation}
+\begin{equation}
+T_n(y) \equiv \sum_{b=0}^\infty T_{nb}y^b
+\end{equation}
+to highlight the fact we will be treating the series as a single variable power series where the coeffiecients depend on y. We may write:
+\begin{equation}
+T_y(x) = \sum_{n=0}^\infty T_n(y)x^n
+\end{equation}
+ We must first confirm that \(T_y(x)\) meets all 6 nessessary conditions so we may apply Theorem 1. Let us first write \(H(x,z)\) as
+\begin{equation}
+H(x,z)=R_y(x)-\frac{F_y^2(x)}{2x^2}+\frac{F_{y^2}(x^2)}{2x^2}-z
+\end{equation}
+So clearly \(z=T_y(x)\) is a solution to \(H(x,z)=0\)whenever \(T_y(x)\) converges. Then conditions 1, 2, 3, and 4 will hold if we can show that for some \(x_T(y)\),\(T_y(x)\) converges for all \(x\leq x_T(y)\). 
+
+The functional equation for \(T_y(x)\) is 
+\begin{equation}
+T_y(x)=R_y(x)-\frac{F_y^2(x)}{2x^2}+\frac{F_{y^2}(x^2)}{2x^2}
+\end{equation}
+Where \(R_y(x)\) is 
+\begin{equation}
+R_y(x)=x + F_y(x) +\frac{F_y(x)}{xy}-\frac{x}{y}-\frac{F_y(x)}{y}+\frac{yF_y^3(x)}{6x^2}+\frac{yF_{y^2}(x^2)F_y(x)}{2x^2}+\frac{yF_{y^3}(x^3)}{3x^2}
+\end{equation}
+And then we may combine the two to get 
+\begin{equation}
+T_y(x)=x + F_y(x) +\frac{F_y(x)}{xy}-\frac{x}{y}-\frac{F_y(x)}{y}+\frac{yF_y^3(x)}{6x^2}+\frac{yF_{y^2}(x^2)F_y(x)}{2x^2}+\frac{yF_{y^3}(x^3)}{3x^2}-\frac{F_y^2(x)}{2x^2}+\frac{F_{y^2}(x^2)}{2x^2}
+\end{equation}
+So we can think of \(T_y(x)\) as a function of \(x, F_y(x), F_{y^2}(x^2), \text{ and } F_{y^3}(x^3)\). This means that \(T_y(x)\) will converge whenever \(F_y(x), F_{y^2}(x^2), \text{ and } F_{y^3}(x^3)\) converge. \(F_y(x), F_{y^2}(x^2), \text{ and } F_{y^3}(x^3)\) have a radii of convergence of \(x_0(y),\sqrt{x_0(y^2)}, \text{ and } \sqrt[3]{x_0(y^3)}\) respectivly. So we observe that 
+\[T_y(x) \text{ converges if } x \leq \text{min}\{x_0(y),\sqrt{x_0(y^2)}, \sqrt[3]{x_0(y^3)}\}\]
+We will show that \(x_0(y)= \text{min}\{x_0(y),\sqrt{x_0(y^2)}, \sqrt[3]{x_0(y^3)}\}\). It follows easily fom the triangle inequality that 
+\[\left(\sum_{b=0}^nF_{nb}y^b\right)^2 \geq \sum_{b=0}^nF_{nb}y^{2b}\]
+Which we can write more compactly as 
+\begin{equation}
+F_n^2(y) \geq F_n(y^2) \quad \text{For all } n
+\end{equation}
+Then we consider the following two power series
+\begin{equation}
+P_1(x)=\sum_{n=0}^\infty F_n^2(y)x^n
+\end{equation}
+\begin{equation}
+P_2(x)=\sum_{n=0}^\infty F_n(y^2)x^n
+\end{equation}
+Let thier radii of convergence be \(r_1\) and \(r_2\) respectively. Then because of Eq. 37 we may deduce that \(r_1\leq r_2\). but we may also write \(r_1\) and \(r_2\) as
+\[r_1=\lim_{n \to \infty} \left(\frac{F_n^2(y)}{F_{n+1}^2(y)}\right)^2=x_0^2(y)\]
+\[r_2=\lim_{n \to \infty} \frac{F_n(y^2)}{F_{n+1}(y^2)}=x_0(y^2)\]
+So we may conclude that \(x_0^2(y) \leq x_0(y^2)\) or 
+\begin{equation}
+x_0(y) \leq \sqrt{x_0(y^2)}
+\end{equation}
+In a very similar way we can show 
+\[x_0(y) \leq \sqrt[3]{x_0(y^3)}\]
+so we can conclude that 
+\[T_y(x) \text{ converges if } x \leq x_0(y)\]
+and thus conditions 1, 2, 3, and 4 hold. Condition 5 holds Via the Inverse Function Theorem just as it did before and condition 6 holds as well. 
+Then we may apply Theorem 1 and expand \(T_y(x)\) as
+\begin{equation}
+T_y(x)=T_y(x_0(y))+\sum_{k=1}^\infty b_k (x_0(y)-x)^{k/2}
+\end{equation}
+ Now we must find the value of \(b_1\). From differentiating the expansion we find
+\begin{equation}
+T_y'(x)=-\frac{b_1}{2}(x_0(y)-x)^{-1/2}-b_2-\frac{3b_3}{2}(x_0(y)-x0^{1/2}+...
+\end{equation}
+So as x gets close to \(x_0(y)\) all terms except the first two go to zero while the first term blows up. So close to \(x_0(y)\) the first term dominates the behavior of the function.
+\begin{equation}
+\lim_{x \to x_0(y)}T'_y(x) = -\frac{b_1}{2}(x_0(y)-x)^{-1/2}
+\end{equation}
+But, we may also differentiate Eq. 34 to get
+\begin{align}
+T_y'(x)=&1+F'_y(x)+\frac{F'_y(x)}{xy}-\frac{F_y(x)}{x^2y}-\frac{1}{y}-\frac{F'_y(x)}{y}+\frac{yF_y^2(x)F'_y(x)}{2x^2}-\frac{yF_y^3(x)}{3x^3}+\frac{yF_{y^2}(x^2)F'_y(x)}{2x^2}+\frac{yF'_{y^2}(x^2)F_y(x)}{x} \nonumber \\
+&-\frac{yF_{y^2}(x^2)F_y(x)}{x^3}+ yF'_{y^3}(x^3)-\frac{2yF_{y^3}(x^3)}{3x^2}-\frac{yF_y(x)F'_y(x)}{x^2}+\frac{F_y^2(x)}{x^3}+\frac{F'_{y^2}(x^2)}{x}-\frac{F_{y^2}(x^2)}{x^3}
+\end{align}  
+Every term that does not have an \(F'_y(x)\) converges as \(x \to x_0(y)\) while every term that does blows up. So as x gets close to \(x_0(y)\) the behavior of the \(F'_y(x)\) terms dominate. So
+\begin{equation}
+\lim_{x \to x_0(y)} T'_y(x) =\lim_{x \to x_0(y)} F'_y(x)\left(1+\frac{1}{xy}-\frac{1}{y}+\frac{1}{x^2}\left(\frac{yF_y^2(x)}{2}+\frac{yF_{y^2}(x^2)}{2}-F_y(x)\right)\right)
+\end{equation}
+Then we may use Eq. 7, Eq.24 , and Eq. 43 to get
+\[b_1=a_1\left(\frac{1}{x_0(y)y}-\frac{1}{y}-\frac{F_y(x_0(y))}{x_0}\right)\]
+Which simplfies using Eq. 22 to 
+\begin{equation}
+b_1=0
+\end{equation}
+Since \(b_1=0\) we must find the value of \(b_3\) and use the second approximation to find our asymptotic formula. To do this we must take the second derivative of \(T_y(x)\). However, it is useful to use a few tricks to remove all of the \(F'_y(x)\) terms from Eq. 44 (we are able to do this because \(T'_y(x)\) converges at \(x_0(y)\)). Then when we differentiate  \(T'_y(x)\) we wont have any \(F''_y(x)\) terms so the only divergent terms will again be those with \(F'_y(x)\). Then when we take the limit as \(x \to x_0(y)\) we will not have a weird mix of \(F'_y(x)\) and \(F''_y(x)\) terms contributing to the behavior. So we recall that
+\[T'_y(x) = F'_y(x)\left(\frac{1}{xy}-\frac{1}{y}-\frac{F_y(x)}{x}\right)+...\]
+which can be simplified to 
+\begin{equation}
+T'_y(x) = \frac{F'_y(x)}{xy}(1-x-yF_y(x))+...
+\end{equation}
+Then, by differentiating Eq 7. we can show that 
+\begin{equation}
+F'_y(x)(1-x-yF_y(x))=2x+F_y(x)+xyF_{y^2}(x^2)
+\end{equation}
+Substituting this into Eq.47 and adding the rest of the terms in we get
+\begin{align}
+T_y'(x)=& \frac{2}{y}+\frac{F_y(x)}{xy}+F'_{y^2}(x^2)+1-\frac{F_y(x)}{x^2y}-\frac{1}{y}-\frac{yF_y^3(x)}{3x^3}+\frac{yF'_{y^2}(x^2)F_y(x)}{x} \nonumber \\
+&-\frac{yF_{y^2}(x^2)F_y(x)}{x^3}+ yF'_{y^3}(x^3)-\frac{2yF_{y^3}(x^3)}{3x^2}+\frac{F_y^2(x)}{x^3}+\frac{F'_{y^2}(x^2)}{x}-\frac{F_{y^2}(x^2)}{x^3}
+\end{align}  
+Now we will take the second derivative of \(T_y(x)\). Eventually, we will take the limit as \(x \to x_0(y)\). Then, diveregent terms such as \(T''_y(x)\) and \(F'_y(x)\) will dominate. So when taking the derivative we only care about the terms with \(F'_y(x)\) so only those terms will be displayed in the interest in keeping the equation relitivly compact. We get
+\begin{equation}
+T''_y(x)=F'_y(x)\left(\frac{1}{xy}-\frac{1}{x^2y}+\frac{yF'_{y^2}(x^2)}{x}-\frac{yF_y^2(x)}{x^3}-\frac{yF_{y^2}(x^2)}{x^3}+\frac{2F_y(x)}{x^3}\right)+...
+\end{equation}
+Then we may take the limit as \(x \to x_0(y)\) and use Eq. 7 to simplify 
+\begin{equation}
+\lim_{x \to x_0(y)} T''_y(x)=\lim_{x \to x_0(y)}F'_y(x)\left(\frac{1}{x_0(y)y}-\frac{1}{x_0^2(y)y}+\frac{yF'_{y^2}(x_0^2(y))}{x}+\frac{1}{x^3}\bigg(2x_0^2(y)+2x_0(y)F_y(x_0(y))\bigg)\right)
+\end{equation} 
+which can be simplified further using Eq. 22 to get
+\begin{equation}
+\lim_{x \to x_0(y)} T''_y(x)=\lim_{x \to x_0(y)}F'_y(x)\left(\frac{2yx_0(y)+x_0(y)y^2F_{y^2}(x_0^2(y)+1-x_0(y)}{yx_0^2(y)}\right)
+\end{equation}
+And then we can differentiate Eq. 42 (remembering that \(b_1=0\)) and use Eq. 24 and Eq. 27 to get
+\begin{equation}
+\frac{3b_3}{4}=\left(\frac{a_1}{2}\right)\left(\frac{ya_1^2}{2x_0^2(y)}\right)
+\end{equation}
+which then gives us
+\begin{equation}
+b_3=\frac{ya_1^3}{3x_0^2(y)}
+\end{equation}
+So we get the following approximation for \(T_n(y)\) using Theorem 1
+\begin{equation}
+T_n(y) \approx \frac{ya_1^3}{4\sqrt{\pi x_0(y)}}x_0^{-n}(y)n^{-5/2} \quad \text{ where }a_1=\frac{1}{y}\sqrt{2(1+x_0(y)(y^2F'_{y^2}(x_0^2(y))+2y-1))}
+\end{equation}
+Or, if we let \(\alpha = \frac{a_1}{2}\sqrt{\frac{x_0(y)}{\pi}}\) which was our coefficient from the asymptotic expansion of planted trees we can equivalently write
+\begin{equation}
+T_n(y) \approx \frac{2\pi y \alpha^3}{x_0^2(y)}x_0^{-n}(y)n^{-5/2}
+\end{equation}
+
+\section{Grand Partition Function}
+We have already stated that the coefficients we just approximated \(T_n(y)\) generalize our former approximation for \(T_n\) as a partition function for an annealed branched polymer of n nodes into both a a partition function for n nodes into a grand partition function on branch points by associating a fugocity, y, with the creation/destruction of a branch node. We have just completed an approximation for this mixed partition function in the form of Eq. 56. But we may go even further. Let us consider using Eq. 56 to write an approximate form of \(T_y(x)\).
+\begin{equation}
+T_y(x)=\sum_{n=0}^\infty  \frac{2\pi y \alpha^3}{x_0^2(y)}n^{-5/2} \left(\frac{x}{x_0(y)}\right)^n
+\end{equation}
+We can imagine that the number of nodes on a polymer is not fixed. physically this can be thought of as polymers splitting or combining to form smaller or larger polymers (this does actually happen). Then we may associate another chemical potential, \(\mu_n\), with the splitting or recombining of the polymers. Then using the same logic we used for the branch nodes we can think of x as the fugocity of splitting/recombination
+\begin{equation}
+x=e^{\frac{\mu_n}{k_BT}}
+\end{equation}
+Then \(T_y(x)\) becomes a grand partition function for both branch nodes and total nodes.
+\begin{equation}
+\Xi(\mu_b,\mu_n)=T_y(x)=\sum_{n=0}^\infty  \frac{2\pi y \alpha^3}{x_0^2(y)}n^{-5/2} \left(\frac{x}{x_0(y)}\right)^n \quad \text{where } x=e^{\beta \mu_n}\text{, } y=e^{\beta \mu_b}\text{, and  } \beta=\frac{1}{k_BT}
+\end{equation}
 \end{document}
