@@ -308,7 +308,7 @@ We have already stated that the coefficients we just approximated \(T_n(y)\) gen
 \begin{equation}
 T_y(x)=\sum_{n=0}^\infty  \frac{2\pi y \alpha^3}{x_0^2(y)}n^{-5/2} \left(\frac{x}{x_0(y)}\right)^n
 \end{equation}
-We can imagine that the number of nodes on a polymer is not fixed. physically this can be thought of as polymers splitting or combining to form smaller or larger polymers (this does actually happen). Then we may associate another chemical potential, \(\mu_n\), with the splitting or recombining of the polymers. Then using the same logic we used for the branch nodes we can think of x as the fugocity of splitting/recombination
+We can imagine that the eginnumber of nodes on a polymer is not fixed. physically this can be thought of as polymers splitting or combining to form smaller or larger polymers (this does actually happen). Then we may associate another chemical potential, \(\mu_n\), with the splitting or recombining of the polymers. Then using the same logic we used for the branch nodes we can think of x as the fugocity of splitting/recombination
 \begin{equation}
 x=e^{\frac{\mu_n}{k_BT}}
 \end{equation}
@@ -316,4 +316,93 @@ Then \(T_y(x)\) becomes a grand partition function for both branch nodes and tot
 \begin{equation}
 \Xi(\mu_b,\mu_n)=T_y(x)=\sum_{n=0}^\infty  \frac{2\pi y \alpha^3}{x_0^2(y)}n^{-5/2} \left(\frac{x}{x_0(y)}\right)^n \quad \text{where } x=e^{\beta \mu_n}\text{, } y=e^{\beta \mu_b}\text{, and  } \beta=\frac{1}{k_BT}
 \end{equation}
+
+\section{Free Energy and Thermal Average Branch Points}
+Now that we have the partition function we can use it to get some results. Our partition function may be written as 
+\begin{equation}
+Z(\mu, n, T)=e^{-\beta E_0}  \frac{ya_1^3}{4\sqrt{\pi x_0(y)}}x_0^{-n}(y)n^{-5/2} \quad \text{where } y=e^{\beta \mu}
+\end{equation}
+The Grand Potential, a type of free energy can be computed from the partition function using the relation
+\begin{equation}
+\Phi(\mu, n , T)=\frac{-\ln(Z)}{\beta}
+\end{equation}
+Then applying Eq. 61 to Eq. 60 we get
+\begin{equation}
+\Phi(\mu,n,T)=E_0-\mu+k_BT\left((n+\frac{1}{2})\ln(x_0(y))+\frac{5}{2}\ln(n)+\ln(4\sqrt{\pi})-3\ln(a_1(y))\right)
+\end{equation}
+This is the free energy associated with our branch counting model of the polymer. It is a Grand Potential interms of branch points and a Helmholtz Free Energy in terms of n making it a mixed potential. From this mixed potential we can get all sorts of useful things. One such thing is a Thermal average of the branch points, \(\langle b\rangle\) which can be found by differentiating the mixed potential with respect to the chemical potential of a branch point. 
+\begin{equation}
+\langle b\rangle =-\frac{\partial \Phi}{\partial \mu}
+\end{equation}
+By applying Eq. 63 to Eq. 62 we can get and expression for the average branch points. We get
+\begin{equation}
+\langle b\rangle =1+\frac{1}{\beta}\left( 3\frac{\partial}{\partial \mu}\ln(a_1(y))-(n+\frac{1}{2})\frac{\partial}{\partial \mu} \ln(x_0(y))\right)
+\end{equation}which can be simplified using the chain rule as:
+\begin{equation}
+\langle b\rangle =1+\frac{1}{\beta}\left( \frac{3}{a_1(y)}\frac{\partial a_1(y)}{\partial y}\frac{\partial y}{\partial \mu}-\frac{(n+\frac{1}{2})}{x_0(y)}\frac{\partial x_0(y)}{\partial y}\frac{\partial y}{\partial \mu} \right)
+\end{equation}
+Then we recall that \(y=e^{\beta \mu}\) so \[\frac{\partial y}{\partial \mu}=\beta y\] which allows us to simplify Eq. 65 to 
+\begin{equation}
+\langle b\rangle =1+ \frac{3y}{a_1(y)}\frac{\partial a_1(y)}{\partial y}-\frac{y(n+\frac{1}{2})}{x_0(y)}\frac{\partial x_0(y)}{\partial y}
+\end{equation}
+We can easily compute \(\frac{\partial x_0(y)}{\partial y}\) numerically using mathematica. All that remains is to calculate \(\frac{\partial a_1(y)}{\partial y}\). First let us realize that \(a_1(y)\) is most easily expressed as a function of y and \(x_0(y)\). Then \(\frac{\partial a_1(y)}{\partial y}\) may be calculated using the chain rule as:
+\[\frac{\partial a_1(y,x_0)}{\partial y}=\frac{\partial x_0}{\partial y}\left(\frac{\partial a_1(y,x_0)}{\partial x_0}\right)_y+\left(\frac{\partial a_1(y,x_0)}{\partial y}\right)_{x_0}\]
+For the time being, we will write \(x_0\) rather than \(x_0(y)\) becuase we will be treating it as a variable rather than a function.
+then let us define the differential operator 
+\begin{equation}
+\partial_y \equiv \frac{\partial x_0}{\partial y}\left(\frac{\partial }{\partial x_0}\right)_y+\left(\frac{\partial}{\partial y}\right)_{x_0}
+\end{equation}
+Now let us rewrite Eq. 27 as 
+\begin{equation}
+\frac{a_1^2}{2x_0}-\frac{1}{x_0y^2}-\frac{2}{y}+\frac{1}{y^2}=F'_{y^2}(x_0^2)
+\end{equation}
+Then if we apply \(\partial_y\) to both sides we get
+\begin{equation}
+\frac{a_1}{x_0}\partial_y a_1-\frac{a_1^2}{2x_0^2}\frac{\partial x_0}{\partial y}+\frac{1}{y^2x_0^2}\frac{\partial x_0}{\partial y}+\frac{2}{x_0y^3}+\frac{2}{y^2}-\frac{2}{y^3}=\partial_yF'_{y^2}(x_0^2)
+\end{equation}
+Then solving for \(\partial_y a_1\) we get
+\begin{equation}
+\partial_y a_1=\frac{\partial x_0}{\partial y}\left(\frac{a_1}{2x_0}-\frac{1}{y^2x_0a_1}\right) +\frac{2}{a_1y^3}((1-y)x_0-1)+\frac{x_0}{a_1}\partial_y F'_{y^2}(x_0^2)
+\end{equation}
+But then the question becomes what is \(\partial_y F'_{y^2}(x_0^2)\). If we differentiate Eq 1 and substitute in \(x_0^2\) for x and \(y^2\) for y, we get that 
+\begin{equation}
+F'_{y^2}(x_0^2)=\sum_{n=0}^\infty\sum_{b=0}^\infty F_{nb}y^{2b}nx_0^{2n-2}
+\end{equation}
+Then after applying \(\partial_y\) to Eq. 71 we get
+\begin{equation}
+\partial_yF'_{y^2}(x_0^2)=\frac{\partial x_0}{\partial y}\sum_{n=0}^\infty\sum_{b=0}^\infty F_{nb}y^{2b}(2n^2-2n)x_0^{2n-3}+\sum_{n=0}^\infty\sum_{b=0}^\infty F_{nb}2by^{2b-1}nx_0^{2n-2}
+\end{equation}
+which simplfies to 
+\begin{equation}
+\partial_yF'_{y^2}(x_0^2)=\sum_{n=0}^\infty\sum_{b=0}^\infty F_{nb}y^{2b}\left(\frac{2bn}{y}+\frac{\partial x_0}{\partial y}\frac{2n^2-2n}{x_0} \right)x_0^{2n-2}
+\end{equation}
+Then we may write that 
+\begin{equation}
+\partial_yF'_{y^2}(x_0^2)=\Gamma(y) \quad \text{where } \Gamma(y) \equiv \sum_{n=0}^\infty \gamma_n(y)x_0^{2n-2} \; \text{and } \gamma_n(y) \equiv \sum_{b=0}^\infty F_{nb}y^{2b}\left(\frac{2bn}{y}+\frac{\partial x_0}{\partial y}\frac{2n^2-2n}{x_0} \right)
+\end{equation}
+Then using Eq. 74 we may rewrite Eq. 70 and plug it into Eq. 66 to get
+\begin{equation}
+\langle b\rangle = 1+ \frac{3y}{a_1}\left(\frac{\partial x_0}{\partial y}\left(\frac{a_1}{2x_0}-\frac{1}{y^2x_0a_1}\right) +\frac{2}{a_1y^3}((1-y)x_0-1)+\frac{x_0}{a_1}\Gamma(y)\right)-\frac{y(n+\frac{1}{2})}{x_0(y)}\frac{\partial x_0(y)}{\partial y}
+\end{equation}
+which simplifies to 
+\begin{equation}
+\langle b\rangle = 1-\frac{\partial x_0(y)}{\partial y}\frac{3}{yx_0a_1^2} +\frac{6}{a_1^2y^2}((1-y)x_0-1)+\frac{3x_0y}{a_1^2}\Gamma(y)-\frac{y(n-1)}{x_0(y)}\frac{\partial x_0(y)}{\partial y}
+\end{equation}
+Then notice if we define
+\begin{equation}
+A(\mu) \equiv -\frac{y}{x_0(y)}\frac{\partial x_0(y)}{\partial y}
+\end{equation}
+and
+\begin{equation}
+B(\mu) \equiv 1-A(\mu) -\frac{3}{yx_0(y)a_1^2(y)}\frac{\partial x_0(y)}{\partial y}++\frac{6}{a_1^2(y)y^2}((1-y)x_0(y)-1)+\frac{3x_0(y)y}{a_1^2(y)}\Gamma(y)
+\end{equation}
+We can rewrite Eq. 76 as 
+\begin{equation}
+\langle b\rangle = A(\mu)n+B(\mu)
+\end{equation}
+which reduces the expression for \(\langle b\rangle\) to a linear equation in terms of n where the coefficient depends on \(\mu\). Additionally, it turns out that \(B(\mu)\) is always on the order of single digits so since we are already deling with large n, we can ignore the \(B(\mu)\) term. So then Eq. 76 may be written as 
+\begin{equation}
+\frac{\langle b\rangle}{n}=A(\mu)
+\end{equation}
+This shows that, for a fixed value of \(\mu\), the ratio of average branch points to total points is roughly a constant!
 \end{document}
